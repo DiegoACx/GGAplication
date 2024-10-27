@@ -14,7 +14,9 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.edu.unab.diegocastro.ggaplication.ui.theme.GGAplicationTheme
@@ -32,9 +34,11 @@ fun Login(){
                     .fillMaxSize(),
                 verticalArrangement = Arrangement.Center) {
 
+
                 Card {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Text(text = "LOGIN")
+
                         OutlinedTextField(
                             value = "",
                             onValueChange = {},
@@ -53,7 +57,7 @@ fun Login(){
                             }, modifier = Modifier.fillMaxWidth()
                         )
 
-                        Spacer(modifier = Modifier.height(22.dp))
+                        Spacer(modifier = Modifier.height(400.dp))
 
                         Button(onClick = { /*TODO*/ },
                             modifier = Modifier.fillMaxWidth()) {
