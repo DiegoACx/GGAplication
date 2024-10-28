@@ -23,7 +23,7 @@ fun HomeScreen() {
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
-            .background(Color(0xFFE1E5CE)),
+            .background(Color(0x95FFFFFF)),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
