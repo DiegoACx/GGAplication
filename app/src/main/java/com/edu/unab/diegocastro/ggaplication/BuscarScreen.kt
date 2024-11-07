@@ -1,6 +1,5 @@
 package com.edu.unab.diegocastro.ggaplication
 
-import android.text.Layout
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,92 +10,95 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.input.KeyboardType.Companion.Text
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.edu.unab.diegocastro.ggaplication.ui.theme.GGAplicationTheme
-
 
 @Preview
 @Composable
 
 fun BuscarScreen() {
-    GGAplicationTheme {
-        Scaffold(
-            modifier = Modifier.fillMaxSize()
-        ) { innerpadding ->
-            Column(
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+            .padding(16.dp)
+    ) {
+        // Barra de búsqueda en la parte superior
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color(0xFF75FF00), shape = RoundedCornerShape(topStart = 16.dp))
+                .padding(8.dp)
+        ) {
+            Text(
+                text = "Buscar",
+                fontSize = 18.sp,
+                color = Color.Black,
+                modifier = Modifier.align(Alignment.Center)
+            )
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Sección de categorías
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f)
+                .background(Color(0xFFA4FF7D), shape = RoundedCornerShape(8.dp))
+                .padding(16.dp)
+        ) {
+            Text(
+                text = "CATEGORIAS",
+                fontSize = 16.sp,
+                fontStyle = FontStyle.Italic,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Box(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(16.dp)
-                    .background(Color(0x95FFFFFF)),
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .background(Color(0xFFE1E5CE), shape = RoundedCornerShape(8.dp))
+            )
+        }
 
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Botones de "BUSCAR" y "ATRAS"
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceAround
+        ) {
+            Button(
+                onClick = { /* Acción de Buscar */ },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB2FF00)
+                , contentColor = Color.Black)
             ) {
+                Text(text = "BUSCAR")
+            }
 
-                Text(
-                    text = "Buscar",
-                    fontSize = 24.sp,
-                    modifier = Modifier
-                        .fillMaxWidth()
-
-                        .padding(vertical = 16.dp),
-                    textAlign = TextAlign.Right
-                )
-
-                Spacer(modifier = Modifier.height(10.dp))
-                Column(
-                    modifier = Modifier
-                        .width(300.dp)
-                        .height(200.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ){
-                    Text("Categorias", fontSize = 18.sp)
-
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Box(
-                        modifier = Modifier
-                            .width(250.dp)
-                            .height(150.dp)
-                            .background(Color.White)
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(220.dp))
-
-                Column { Row(
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Button(
-                        onClick = {},
-                        modifier = Modifier.weight(1f),
-
-                        ) {
-                        Text("BUSCAR", color = Color.White)
-                    }
-
-                    Button(
-                        onClick = {},
-                        modifier = Modifier.weight(1f),
-
-                        ) {
-                        Text("Atras", color = Color.White)
-                    }
-                } }
+            Button(
+                onClick = { /* Acción de Atrás */ },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB2FF00)
+                , contentColor = Color.Black)
+            ) {
+                Text(text = "ATRAS")
             }
         }
     }
 }
+
+
