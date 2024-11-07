@@ -23,16 +23,16 @@ fun HomeScreen() {
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
-            .background(Color(0x95FFFFFF)),
+            .background(Color(0xFFE1E5CE)),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
         Text(
             text = "INICIO",
             fontSize = 24.sp,
+            color = Color(0xFFA3D16A),
             modifier = Modifier
                 .fillMaxWidth()
-
                 .padding(vertical = 16.dp),
             textAlign = TextAlign.Center
         )
@@ -49,11 +49,12 @@ fun HomeScreen() {
         Column(
             modifier = Modifier
                 .width(300.dp)
-                .height(200.dp),
+                .height(200.dp)
+                .background(Color(0xFFA3D16A)),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ){
-            Text("ACTIVIDADES", fontSize = 18.sp)
+            Text("ACTIVIDADES", fontSize = 18.sp, color = Color.White)
 
             Spacer(modifier = Modifier.height(8.dp))
 
@@ -73,7 +74,7 @@ fun HomeScreen() {
             Button(
                 onClick = {},
                 modifier = Modifier.weight(1f),
-
+                colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A))
                 ) {
                 Text("BUSCAR", color = Color.White)
             }
@@ -81,7 +82,7 @@ fun HomeScreen() {
             Button(
                 onClick = {},
                 modifier = Modifier.weight(1f),
-
+                colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A))
                 ) {
                 Text("MAS", color = Color.White)
             }
@@ -91,7 +92,8 @@ fun HomeScreen() {
             onClick = {},
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 32.dp)
+                .padding(horizontal = 32.dp),
+            colors = ButtonDefaults.buttonColors(Color(0xFFB8BD9F))
         ) {
             Text("FORMULARIOS", color = Color.White)
 
@@ -101,7 +103,8 @@ fun HomeScreen() {
             onClick = {},
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 32.dp)
+                .padding(horizontal = 32.dp),
+            colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A))
         ){
             Text("SALIR", color = Color.White)
         }
