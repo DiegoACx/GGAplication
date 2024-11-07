@@ -62,48 +62,50 @@ fun FormularioScreen() {
                 PreguntaCard()
                 Spacer(modifier = Modifier.height(8.dp))
             }
+        }
 
-            Spacer(modifier = Modifier.weight(1f))
+        Spacer(modifier = Modifier.height(16.dp))
 
-            Row(
-                modifier = Modifier.fillMaxWidth().background(Color(0xFF8CC663)),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color(0xFF8CC663))
+                .padding(8.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            IconButton(onClick = {}) {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = "Agregar",
+                    tint = Color.White,
+                    modifier = Modifier.size(32.dp)
+                )
+            }
 
-                ) {
-                IconButton(onClick = {}) {
-                    Icon(
-                        imageVector = Icons.Default.Add,
-                        contentDescription = "Agregar",
-                        tint = Color.White,
-                        modifier = Modifier.size(32.dp)
-                    )
-                }
+            IconButton(onClick = {}) {
+                Icon(
+                    imageVector = Icons.Default.Delete,
+                    contentDescription = "Quitar",
+                    tint = Color.White,
+                    modifier = Modifier.size(32.dp)
+                )
+            }
 
-                IconButton(onClick = {}) {
-                    Icon(
-                        imageVector = Icons.Default.Delete,
-                        contentDescription = "Quitar",
-                        tint = Color.White,
-                        modifier = Modifier.size(32.dp)
-                    )
-                }
+            Spacer(modifier = Modifier.width(16.dp))
 
-                Spacer(modifier = Modifier.width(16.dp))
-
-                Button(
-                    onClick = {},
-                    colors = ButtonDefaults.buttonColors(Color(0xFF8CC663))
-                ) {
-                    Text("GUARDAR", color = Color.White)
-                }
+            Button(
+                onClick = {},
+                colors = ButtonDefaults.buttonColors(Color(0xFF8CC663))
+            ) {
+                Text("GUARDAR", color = Color.White)
             }
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = {},
+            onClick = { /* Acción de Salir */ },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
@@ -113,6 +115,7 @@ fun FormularioScreen() {
         }
     }
 }
+
 
 @Composable
 fun PreguntaCard() {
