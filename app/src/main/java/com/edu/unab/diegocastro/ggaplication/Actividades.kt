@@ -1,4 +1,4 @@
-package com.edu.unab.diegocastro.ggaplication.ui.theme
+package com.edu.unab.diegocastro.ggaplication
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
