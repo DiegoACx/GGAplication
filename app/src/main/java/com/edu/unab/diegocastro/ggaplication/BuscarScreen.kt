@@ -81,7 +81,7 @@ fun BuscarScreen() {
             Button(
                 onClick = {},
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A)
-                , contentColor = Color.Black)
+                    , contentColor = Color.Black)
             ) {
                 Text(text = "BUSCAR")
             }
@@ -89,12 +89,11 @@ fun BuscarScreen() {
             Button(
                 onClick = {},
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A)
-                , contentColor = Color.Black)
+                    , contentColor = Color.Black)
             ) {
                 Text(text = "ATRAS")
             }
         }
     }
 }
-
 
