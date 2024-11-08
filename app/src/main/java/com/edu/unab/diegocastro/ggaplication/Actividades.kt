@@ -25,6 +25,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -35,20 +37,20 @@ fun Actividades() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color(0xFFE1E5CE))
             .padding(16.dp)
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(0xFF75FF00), shape = RoundedCornerShape(topStart = 16.dp))
+                .background(Color(0xFFE1E5CE), shape = RoundedCornerShape(topStart = 16.dp))
                 .padding(8.dp), verticalAlignment = Alignment.CenterVertically
         ) {
 
             Box(
                 modifier = Modifier
                     .size(30.dp)
-                    .background(Color(0xFF75FF00), shape = CircleShape)
+                    .background(Color(0xFFE1E5CE), shape = CircleShape)
                     .border(1.dp, Color.Gray, shape = CircleShape)
                     .clickable { },
                 contentAlignment = Alignment.Center
@@ -64,9 +66,13 @@ fun Actividades() {
 
             Text(
                 text = "ACTIVIDADES",
-                fontSize = 18.sp,
-                color = Color.Black,
-                modifier = Modifier.align(Alignment.CenterVertically)
+                fontSize = 24.sp,
+                color = Color(0xFFA3D16A),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 8.dp),
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Bold
             )
         }
 
@@ -76,14 +82,24 @@ fun Actividades() {
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f)
-                .background(Color(0xFFA4FF7D), shape = RoundedCornerShape(8.dp))
+                .background(Color(0xFFAED581), shape = RoundedCornerShape(8.dp))
                 .padding(16.dp)
         ) {
-            Text(
-                text = "ACTIVIDADES",
-                fontSize = 16.sp,
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-            )
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color(0xFF8CC663), RoundedCornerShape(8.dp))
+                    .padding(16.dp)
+            ) {
+                Text(
+                    text = "ACTIVIDADES DISPONIBLES",
+                    color = Color.Black,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
 
             Spacer(modifier = Modifier.height(8.dp))
 
@@ -91,7 +107,7 @@ fun Actividades() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f)
-                    .background(Color(0xFFA4FF7D), shape = RoundedCornerShape(8.dp))
+                    .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp))
             )
         }
 
@@ -102,7 +118,7 @@ fun Actividades() {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB2FF00))
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A))
         ) {
             Text(text = "INSCRIBIRSE A ACTIVIDAD SELECCIONADA")
         }
@@ -114,7 +130,7 @@ fun Actividades() {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB2FF00))
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A))
         ) {
             Text(text = "INSCRITAS")
         }

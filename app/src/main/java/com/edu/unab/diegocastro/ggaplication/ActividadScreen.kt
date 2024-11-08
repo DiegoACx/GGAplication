@@ -136,7 +136,7 @@ fun ActividadScreen() {
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A))
         ) {
             Text(text = "INSCRITAS"
-            , color = Color.Black)
+                , color = Color.Black)
         }
     }
 }
