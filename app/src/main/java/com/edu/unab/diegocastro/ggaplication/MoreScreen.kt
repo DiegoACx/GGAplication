@@ -51,7 +51,7 @@ fun MoreScreen() {
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f)
-                .background(Color(0xFFA3D16A), RoundedCornerShape(16.dp))
+                .background(Color(0xFFAED581), RoundedCornerShape(16.dp))
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -61,7 +61,7 @@ fun MoreScreen() {
             ) {
                 Button(
                     onClick = {},
-                    colors = ButtonDefaults.buttonColors(Color(0xFF8CC663)),
+                    colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A)),
                     modifier = Modifier.weight(1f)
                 ) {
                     Text("CREAR EVENTO", color = Color.White)
@@ -71,7 +71,7 @@ fun MoreScreen() {
 
                 Button(
                     onClick = {},
-                    colors = ButtonDefaults.buttonColors(Color(0xFF8CC663)),
+                    colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A)),
                     modifier = Modifier.weight(1f)
                 ) {
                     Text("CREAR FORMULARIO", color = Color.White, textAlign = TextAlign.Center)
@@ -110,7 +110,7 @@ fun EventCard(eventTitle: String, eventDescription: String) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color(0xFFB8BD9F), RoundedCornerShape(8.dp))
+            .background(Color(0xFFD6E6A7), RoundedCornerShape(8.dp))
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -121,7 +121,7 @@ fun EventCard(eventTitle: String, eventDescription: String) {
 
         Button(
             onClick = {},
-            colors = ButtonDefaults.buttonColors(Color(0xFF8CC663))
+            colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A))
         ) {
             Text("SELECCIONAR", color = Color.White)
         }
