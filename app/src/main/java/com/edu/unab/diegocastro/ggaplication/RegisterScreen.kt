@@ -37,18 +37,17 @@ fun RegisterScreen() {
         Scaffold(
             modifier = Modifier
                 .fillMaxSize()
-                .background(color = Color(0xFFE1E5CE)) // Fondo de pantalla principal
+                .background(color = Color(0xFFE1E5CE))
         ) { innerPadding ->
             Column(
                 modifier = Modifier
                     .padding(innerPadding)
                     .fillMaxSize()
                     .background(Color(0xFFE1E5CE))
-                    .padding(vertical = 32.dp), // Padding general para separación del borde de la pantalla
+                    .padding(vertical = 32.dp),
                 verticalArrangement = Arrangement.SpaceBetween,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Título "REGISTER" en la parte superior
                 Text(
                     text = "REGISTER",
                     fontSize = 24.sp,
@@ -60,7 +59,6 @@ fun RegisterScreen() {
                     fontWeight = FontWeight.Bold
                 )
 
-                // Card en el centro con campos de texto para registro
                 Card(
                     modifier = Modifier
                         .fillMaxWidth(0.9f)
@@ -75,7 +73,6 @@ fun RegisterScreen() {
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        // Campos de texto para nombre, apellido, correo, teléfono e ID
                         OutlinedTextField(
                             value = "", onValueChange = {},
                             label = { Text(text = "Nombre") },
@@ -146,15 +143,14 @@ fun RegisterScreen() {
                     }
                 }
 
-                // Botones en la parte inferior
                 Column(
                     modifier = Modifier
                         .fillMaxWidth(0.9f)
-                        .padding(bottom = 16.dp), // Padding inferior para separar del borde
+                        .padding(bottom = 16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Button(
-                        onClick = { /* Acción del botón de Register */ },
+                        onClick = {},
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 4.dp)
@@ -169,7 +165,7 @@ fun RegisterScreen() {
                     }
 
                     Button(
-                        onClick = { /* Acción del botón de Cancel */ },
+                        onClick = {},
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 4.dp)
