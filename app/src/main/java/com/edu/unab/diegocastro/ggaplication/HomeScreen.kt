@@ -77,7 +77,7 @@ fun HomeScreen() {
                 onClick = {},
                 modifier = Modifier.weight(1f),
                 colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A))
-                ) {
+            ) {
                 Text("BUSCAR", color = Color.White)
             }
 
@@ -85,7 +85,7 @@ fun HomeScreen() {
                 onClick = {},
                 modifier = Modifier.weight(1f),
                 colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A))
-                ) {
+            ) {
                 Text("MAS", color = Color.White)
             }
         }
