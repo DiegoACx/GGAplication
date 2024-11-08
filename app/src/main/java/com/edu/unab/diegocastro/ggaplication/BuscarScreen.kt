@@ -19,6 +19,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -30,22 +32,19 @@ fun BuscarScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color(0xFFE1E5CE))
             .padding(16.dp)
     ) {
-        Box(
+        Text(
+            text = "BUSCAR",
+            fontSize = 24.sp,
+            color = Color(0xFFA3D16A),
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(0xFF75FF00), shape = RoundedCornerShape(topStart = 16.dp))
-                .padding(8.dp)
-        ) {
-            Text(
-                text = "Buscar",
-                fontSize = 18.sp,
-                color = Color.Black,
-                modifier = Modifier.align(Alignment.Center)
-            )
-        }
+                .padding(vertical = 8.dp),
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold
+        )
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -53,7 +52,7 @@ fun BuscarScreen() {
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f)
-                .background(Color(0xFFA4FF7D), shape = RoundedCornerShape(8.dp))
+                .background(Color(0xFFAED581), shape = RoundedCornerShape(8.dp))
                 .padding(16.dp)
         ) {
             Text(
@@ -69,7 +68,7 @@ fun BuscarScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f)
-                    .background(Color(0xFFE1E5CE), shape = RoundedCornerShape(8.dp))
+                    .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp))
             )
         }
 
@@ -81,7 +80,7 @@ fun BuscarScreen() {
         ) {
             Button(
                 onClick = {},
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB2FF00)
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A)
                 , contentColor = Color.Black)
             ) {
                 Text(text = "BUSCAR")
@@ -89,7 +88,7 @@ fun BuscarScreen() {
 
             Button(
                 onClick = {},
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB2FF00)
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A)
                 , contentColor = Color.Black)
             ) {
                 Text(text = "ATRAS")

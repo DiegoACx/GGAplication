@@ -26,21 +26,16 @@ fun ChatScreen() {
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Box(
+        Text(
+            text = "CHATS",
+            fontSize = 24.sp,
+            color = Color(0xFFA3D16A),
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(0xFFAED581), shape = RoundedCornerShape(8.dp))
-                .padding(8.dp)
-        ) {
-            Text(
-                text = "CHATS",
-                color = Color(0xFF33691E),
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.align(Alignment.Center)
-            )
-        }
+                .padding(vertical = 8.dp),
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold
+        )
 
         Spacer(modifier = Modifier.height(16.dp))
 
