@@ -43,7 +43,7 @@ fun FormularioScreen() {
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f)
-                .background(Color(0xFFA3D16A), RoundedCornerShape(16.dp))
+                .background(Color(0xFFAED581), RoundedCornerShape(16.dp))
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

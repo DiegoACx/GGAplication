@@ -31,11 +31,13 @@ fun InscritasScreen() {
         ) {
             Text(
                 text = "INSCRITAS",
-                color = Color(0xFF4CAF50),
-                fontSize = 26.sp,
-                fontWeight = FontWeight.Bold,
+                fontSize = 24.sp,
+                color = Color(0xFFA3D16A),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 8.dp),
                 textAlign = TextAlign.Center,
-                modifier = Modifier.align(Alignment.Center)
+                fontWeight = FontWeight.Bold
             )
         }
 

@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,8 +34,9 @@ fun HomeScreen() {
             color = Color(0xFFA3D16A),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 16.dp),
-            textAlign = TextAlign.Center
+                .padding(vertical = 8.dp),
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold
         )
 
         Box(
@@ -50,7 +52,7 @@ fun HomeScreen() {
             modifier = Modifier
                 .width(300.dp)
                 .height(200.dp)
-                .background(Color(0xFFA3D16A)),
+                .background(Color(0xFFAED581)),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ){
@@ -93,7 +95,7 @@ fun HomeScreen() {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
-            colors = ButtonDefaults.buttonColors(Color(0xFFB8BD9F))
+            colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A))
         ) {
             Text("FORMULARIOS", color = Color.White)
 
