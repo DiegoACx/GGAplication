@@ -33,7 +33,6 @@ fun BuscarScreen() {
             .background(Color.White)
             .padding(16.dp)
     ) {
-        // Barra de búsqueda en la parte superior
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -50,7 +49,6 @@ fun BuscarScreen() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Sección de categorías
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -77,13 +75,12 @@ fun BuscarScreen() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Botones de "BUSCAR" y "ATRAS"
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceAround
         ) {
             Button(
-                onClick = { /* Acción de Buscar */ },
+                onClick = {},
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB2FF00)
                 , contentColor = Color.Black)
             ) {
@@ -91,7 +88,7 @@ fun BuscarScreen() {
             }
 
             Button(
-                onClick = { /* Acción de Atrás */ },
+                onClick = {},
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB2FF00)
                 , contentColor = Color.Black)
             ) {

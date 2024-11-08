@@ -76,7 +76,7 @@ fun RegisterScreen() {
                     onClick = {/*TODO*/ },
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text(text = "Cancelar")
+                    Text(text = "Cancel")
                 }
             }
         }

@@ -50,19 +50,18 @@ fun Actividades() {
                     .size(30.dp)
                     .background(Color(0xFF75FF00), shape = CircleShape)
                     .border(1.dp, Color.Gray, shape = CircleShape)
-                    .clickable { /* Acción de regresar */ },
+                    .clickable { },
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
                     contentDescription = "Regresar",
-                    tint = Color.Black // Color de la flecha
+                    tint = Color.Black
                 )
             }
 
             Spacer(modifier = Modifier.width(8.dp))
 
-            // Título
             Text(
                 text = "ACTIVIDADES",
                 fontSize = 18.sp,
@@ -73,7 +72,6 @@ fun Actividades() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Sección de actividades
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -99,9 +97,8 @@ fun Actividades() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Botón de inscribirse
         Button(
-            onClick = { /* Acción para inscribirse */ },
+            onClick = {},
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
@@ -112,9 +109,8 @@ fun Actividades() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Botón de inscritas
         Button(
-            onClick = { /* Acción para ver actividades inscritas */ },
+            onClick = {},
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
