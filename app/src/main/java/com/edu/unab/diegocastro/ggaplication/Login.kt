@@ -14,7 +14,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -24,17 +23,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.edu.unab.diegocastro.ggaplication.ui.theme.GGAplicationTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavController) {
     GGAplicationTheme {
         Scaffold(
             modifier = Modifier
@@ -49,8 +47,6 @@ fun LoginScreen() {
                 verticalArrangement = Arrangement.SpaceBetween,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-
-
                 Text(
                     text = "LOGIN",
                     fontSize = 24.sp,
@@ -109,7 +105,7 @@ fun LoginScreen() {
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Button(
-                    onClick = {},
+                    onClick = { navController.navigate("home") },
                     modifier = Modifier
                         .fillMaxWidth(0.9f)
                         .height(48.dp),
@@ -121,14 +117,21 @@ fun LoginScreen() {
                         fontWeight = FontWeight.Bold
                     )
                 }
+
+                Button(
+                    onClick = { navController.navigate("register") },
+                    modifier = Modifier
+                        .fillMaxWidth(0.9f)
+                        .height(48.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A))
+                ) {
+                    Text(
+                        text = "Register",
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
             }
         }
     }
 }
-
-
-
-
-
-
-
