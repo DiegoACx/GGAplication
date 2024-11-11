@@ -27,12 +27,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.edu.unab.diegocastro.ggaplication.ui.theme.GGAplicationTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(navController: NavController) {
     GGAplicationTheme {
         Scaffold(
             modifier = Modifier
@@ -150,7 +150,7 @@ fun RegisterScreen() {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Button(
-                        onClick = {},
+                        onClick = {navController.navigate("login")},
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 4.dp)
@@ -165,7 +165,7 @@ fun RegisterScreen() {
                     }
 
                     Button(
-                        onClick = {},
+                        onClick = {navController.navigate("login")},
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 4.dp)

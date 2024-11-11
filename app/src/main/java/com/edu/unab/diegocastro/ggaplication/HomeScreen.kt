@@ -15,11 +15,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
-@Preview
 @Composable
 
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -102,7 +102,7 @@ fun HomeScreen() {
         }
 
         Button(
-            onClick = {},
+            onClick = {navController.navigate("login")},
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
