@@ -70,15 +70,15 @@ fun CuentaScreen() {
                         horizontalAlignment = Alignment.Start,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        Text(text = "Nombre:")
+                        Text(text = "Nombre:                        XXXXX XXXXX")
                         Spacer(modifier = Modifier.height(15.dp))
-                        Text(text = "Id:")
+                        Text(text = "Id:                                      XXXXXXXXX")
                         Spacer(modifier = Modifier.height(15.dp))
-                        Text(text = "Correo:")
+                        Text(text = "Correo:                  XXXX@unab.edu.co")
                         Spacer(modifier = Modifier.height(15.dp))
-                        Text(text = "Horas Libres:")
+                        Text(text = "Horas Libres:                                     XX")
                         Spacer(modifier = Modifier.height(15.dp))
-                        Text(text = "Actividades Incritas:")
+                        Text(text = "Actividades Incritas:                         XX")
                     }
                 }
 
