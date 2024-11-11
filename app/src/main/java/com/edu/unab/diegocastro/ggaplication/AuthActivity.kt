@@ -31,7 +31,7 @@ class AuthActivity : ComponentActivity() {
             ) {
                 composable("login") { LoginScreen(navController) }
                 composable("register") { RegisterScreen(navController) }
-                composable("home") { HomeScreen(navController) }
+                //composable("home") { HomeScreen(navController) }
                 //composable("mas") { MoreScreen(navController) }
                 //composable("inscritas") { InscritasScreen(navController) }
                 //composable("inscribirse") { InscripcionScreen(navController) }
