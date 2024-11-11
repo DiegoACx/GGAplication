@@ -111,7 +111,7 @@ fun InscripcionScreen() {
                 val telefono = remember { mutableStateOf(TextFieldValue()) }
                 val id = remember { mutableStateOf(TextFieldValue()) }
 
-                TextField(
+                OutlinedTextField(
                     value = nombre.value,
                     onValueChange = { nombre.value = it },
                     label = { Text("NOMBRE") },
@@ -125,7 +125,7 @@ fun InscripcionScreen() {
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                TextField(
+                OutlinedTextField(
                     value = apellido.value,
                     onValueChange = { nombre.value = it },
                     label = { Text("APELLIDO") },
@@ -139,7 +139,7 @@ fun InscripcionScreen() {
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                TextField(
+                OutlinedTextField(
                     value = email.value,
                     onValueChange = { nombre.value = it },
                     label = { Text("EMAIL") },
@@ -153,7 +153,7 @@ fun InscripcionScreen() {
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                TextField(
+                OutlinedTextField(
                     value = telefono.value,
                     onValueChange = { nombre.value = it },
                     label = { Text("TELEFONO") },
@@ -167,7 +167,7 @@ fun InscripcionScreen() {
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                TextField(
+                OutlinedTextField(
                     value = id.value,
                     onValueChange = { nombre.value = it },
                     label = { Text("ID") },
