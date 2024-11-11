@@ -39,7 +39,6 @@ fun HistorialScreen() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Box para "Historial de actividades terminadas"
         Box(
             modifier = Modifier
                 .background(Color(0xFFAED581), shape = RoundedCornerShape(8.dp))
@@ -78,7 +77,6 @@ fun HistorialScreen() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Box para "Historial de actividades no terminadas"
         Box(
             modifier = Modifier
                 .background(Color(0xFFAED581), shape = RoundedCornerShape(8.dp))
@@ -117,7 +115,7 @@ fun HistorialScreen() {
 
         Spacer(modifier = Modifier.weight(1f))
 
-        // Botón "SALIR" en la parte inferior, centrado y con padding adicional
+
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -125,7 +123,7 @@ fun HistorialScreen() {
             contentAlignment = Alignment.Center
         ) {
             Button(
-                onClick = { /* Acción para salir */ },
+                onClick = {},
                 colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A)),
                 modifier = Modifier
                     .width(120.dp)
