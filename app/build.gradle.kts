@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -8,7 +9,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.edu.unab.diegocastro.ggaplication"
+            applicationId = "com.edu.unab.diegocastro.ggaplication"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -68,5 +69,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation("androidx.compose.material3:material3:1.1.0")
+
+    //Firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
 
 }

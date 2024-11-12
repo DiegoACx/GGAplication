@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "310943847504",
+    "project_id": "ggaplication-625b1",
+    "storage_bucket": "ggaplication-625b1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310943847504:android:1abe59ded00e1598792d55",
+        "android_client_info": {
+          "package_name": "com.edu.unab.diegocastro.ggaplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRLsghbLDpCnnEgLWy37RFXWusy0Zbjpw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
