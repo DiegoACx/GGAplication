@@ -93,7 +93,7 @@ fun EstadoScreen(navController: NavController) {
             modifier = Modifier.fillMaxWidth().padding(8.dp)
         ) {
             Button(
-                onClick = {navController.navigate("historial")},
+                onClick = {navController.navigate("historial") {popUpTo("estado"){inclusive = true}} },
                 colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A)),
                 modifier = Modifier.padding(8.dp)
             ) {
@@ -101,7 +101,7 @@ fun EstadoScreen(navController: NavController) {
             }
 
             Button(
-                onClick = {navController.navigate("actividades")},
+                onClick = {navController.navigate("actividades") {popUpTo("estado"){inclusive = true}} },
                 colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A)),
                 modifier = Modifier.padding(8.dp)
             ) {

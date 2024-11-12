@@ -11,10 +11,8 @@ import androidx.navigation.compose.rememberNavController
 import com.edu.unab.diegocastro.ggaplication.ActividadScreen
 import com.edu.unab.diegocastro.ggaplication.Actividades
 import com.edu.unab.diegocastro.ggaplication.BuscarScreen
-import com.edu.unab.diegocastro.ggaplication.ChatScreen
 import com.edu.unab.diegocastro.ggaplication.CuentaScreen
 import com.edu.unab.diegocastro.ggaplication.EstadoScreen
-import com.edu.unab.diegocastro.ggaplication.FormularioScreen
 import com.edu.unab.diegocastro.ggaplication.HistorialScreen
 import com.edu.unab.diegocastro.ggaplication.HomeScreen
 import com.edu.unab.diegocastro.ggaplication.InscripcionScreen
@@ -40,10 +38,8 @@ class AuthActivity : ComponentActivity() {
                 composable("inscritas") { InscritasScreen(navController) }
                 composable("inscribirse") { InscripcionScreen(navController) }
                 composable("historial") { HistorialScreen(navController) }
-                composable("formulario") { FormularioScreen(navController) }
                 composable("estado") { EstadoScreen(navController) }
                 composable("cuenta") { CuentaScreen(navController) }
-                composable("chat") { ChatScreen(navController) }
                 composable("buscar") { BuscarScreen(navController) }
                 composable("actividad") { ActividadScreen(navController) }
                 composable("actividades") { Actividades(navController) }

@@ -124,7 +124,7 @@ fun HistorialScreen(navController: NavController) {
             contentAlignment = Alignment.Center
         ) {
             Button(
-                onClick = {navController.navigate("estado")},
+                onClick = {navController.navigate("estado") {popUpTo("historial"){inclusive = true}} },
                 colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A)),
                 modifier = Modifier
                     .width(120.dp)

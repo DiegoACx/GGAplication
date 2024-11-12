@@ -83,7 +83,7 @@ fun CuentaScreen(navController: NavController) {
                 }
 
                 Button(
-                    onClick = {navController.navigate("home")},
+                    onClick = {navController.navigate("home") {popUpTo("cuenta"){inclusive = true}} },
                     modifier = Modifier
                         .fillMaxWidth(0.9f)
                         .padding(bottom = 16.dp)
