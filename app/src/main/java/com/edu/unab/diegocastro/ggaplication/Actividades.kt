@@ -32,7 +32,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
-@Preview
 @Composable
 fun Actividades(navController: NavController) {
     Column(
@@ -104,7 +103,6 @@ fun Actividades(navController: NavController) {
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Column para las actividades
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -112,15 +110,13 @@ fun Actividades(navController: NavController) {
                     .background(Color(0xFFAED581), shape = RoundedCornerShape(8.dp))
                     .padding(16.dp)
             ) {
-                // Actividad 1
                 ActivityCard(activityName = "Actividad 1")
                 Spacer(modifier = Modifier.height(8.dp))
 
-                // Actividad 2
                 ActivityCard(activityName = "Actividad 2")
                 Spacer(modifier = Modifier.height(8.dp))
 
-                // Actividad 3
+
                 ActivityCard(activityName = "Actividad 3")
             }
         }
