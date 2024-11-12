@@ -23,10 +23,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
-@Preview
+
 @Composable
-fun MoreScreen() {
+fun MoreScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -80,11 +81,12 @@ fun MoreScreen() {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            EventCard(eventTitle = "Evento 1", eventDescription = "Descripción Evento 1")
+            EventCard(navController = navController, eventTitle = "Evento 1", eventDescription = "Descripción Evento 1")
             Spacer(modifier = Modifier.height(8.dp))
-            EventCard(eventTitle = "Evento 2", eventDescription = "Descripción Evento 2")
+            EventCard(navController = navController, eventTitle = "Evento 2", eventDescription = "Descripción Evento 2")
             Spacer(modifier = Modifier.height(8.dp))
-            EventCard(eventTitle = "Evento 3", eventDescription = "Descripción Evento 3")
+            EventCard(navController = navController, eventTitle = "Evento 3", eventDescription = "Descripción Evento 3")
+
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -94,7 +96,7 @@ fun MoreScreen() {
 
 
         Button(
-            onClick = {},
+            onClick = {navController.navigate("home")},
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
@@ -106,7 +108,7 @@ fun MoreScreen() {
 }
 
 @Composable
-fun EventCard(eventTitle: String, eventDescription: String) {
+fun EventCard(navController: NavController,eventTitle: String, eventDescription: String) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -120,8 +122,9 @@ fun EventCard(eventTitle: String, eventDescription: String) {
         Spacer(modifier = Modifier.height(8.dp))
 
         Button(
-            onClick = {},
-            colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A))
+            onClick = {navController.navigate("actividades")},
+            colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A)),
+            modifier = Modifier.fillMaxWidth()
         ) {
             Text("SELECCIONAR", color = Color.White)
         }

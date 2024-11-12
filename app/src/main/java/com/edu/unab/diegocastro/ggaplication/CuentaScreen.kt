@@ -25,11 +25,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.edu.unab.diegocastro.ggaplication.ui.theme.GGAplicationTheme
 
 @Preview
 @Composable
-fun CuentaScreen() {
+fun CuentaScreen(navController: NavController) {
     GGAplicationTheme {
         Scaffold(
             modifier = Modifier

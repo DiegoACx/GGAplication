@@ -31,18 +31,18 @@ class AuthActivity : ComponentActivity() {
             ) {
                 composable("login") { LoginScreen(navController) }
                 composable("register") { RegisterScreen(navController) }
-                //composable("home") { HomeScreen(navController) }
-                //composable("mas") { MoreScreen(navController) }
-                //composable("inscritas") { InscritasScreen(navController) }
-                //composable("inscribirse") { InscripcionScreen(navController) }
-                //composable("historial") { HistorialScreen(navController) }
-                //composable("formulario") { FormularioScreen(navController) }
-                //composable("estado") { EstadoScreen(navController) }
-                //composable("cuenta") { CuentaScreen(navController) }
-                //composable("chat") { ChatScreen(navController) }
-                //composable("buscar") { BuscarScreen(navController) }
-                //composable("actividad") { ActividadScreen(navController) }
-                //composable("actividades") { Actividades(navController) }
+                composable("home") { HomeScreen(navController) }
+                composable("mas") { MoreScreen(navController) }
+                composable("inscritas") { InscritasScreen(navController) }
+                composable("inscribirse") { InscripcionScreen(navController) }
+                composable("historial") { HistorialScreen(navController) }
+                composable("formulario") { FormularioScreen(navController) }
+                composable("estado") { EstadoScreen(navController) }
+                composable("cuenta") { CuentaScreen(navController) }
+                composable("chat") { ChatScreen(navController) }
+                composable("buscar") { BuscarScreen(navController) }
+                composable("actividad") { ActividadScreen(navController) }
+                composable("actividades") { Actividades(navController) }
             }
         }
     }

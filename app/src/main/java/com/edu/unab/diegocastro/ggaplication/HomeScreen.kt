@@ -17,10 +17,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
-@Preview
+
 @Composable
 
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -75,7 +75,7 @@ fun HomeScreen() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Button(
-                onClick = {},
+                onClick = {navController.navigate("buscar")},
                 modifier = Modifier.weight(1f),
                 colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A))
             ) {
@@ -83,7 +83,7 @@ fun HomeScreen() {
             }
 
             Button(
-                onClick = {},
+                onClick = {navController.navigate("mas")},
                 modifier = Modifier.weight(1f),
                 colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A))
             ) {
@@ -92,7 +92,7 @@ fun HomeScreen() {
         }
 
         Button(
-            onClick = {},
+            onClick = {navController.navigate("formulario")},
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
@@ -103,7 +103,7 @@ fun HomeScreen() {
         }
 
         Button(
-            onClick = {},
+            onClick = {navController.navigate("login")},
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
