@@ -103,12 +103,25 @@ fun Actividades() {
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            Box(
+            // Column para las actividades
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f)
-                    .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp))
-            )
+                    .background(Color(0xFFAED581), shape = RoundedCornerShape(8.dp))
+                    .padding(16.dp)
+            ) {
+                // Actividad 1
+                ActivityCard(activityName = "Actividad 1")
+                Spacer(modifier = Modifier.height(8.dp))
+
+                // Actividad 2
+                ActivityCard(activityName = "Actividad 2")
+                Spacer(modifier = Modifier.height(8.dp))
+
+                // Actividad 3
+                ActivityCard(activityName = "Actividad 3")
+            }
         }
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -136,3 +149,33 @@ fun Actividades() {
         }
     }
 }
+
+@Composable
+fun ActivityCard(activityName: String) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp))
+            .padding(16.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(
+                text = activityName,
+                color = Color.Black,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Button(
+                onClick = {},
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A))
+            ) {
+                Text(text = "VER ACTIVIDAD")
+            }
+        }
+    }
+}
+
