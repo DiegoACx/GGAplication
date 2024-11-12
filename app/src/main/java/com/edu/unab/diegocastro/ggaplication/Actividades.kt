@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -55,11 +56,16 @@ fun Actividades(navController: NavController) {
                     .clickable { },
                 contentAlignment = Alignment.Center
             ) {
-                Icon(
-                    imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "Regresar",
-                    tint = Color.Black
-                )
+                IconButton(
+                    onClick = {navController.navigate("mas")}
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowBack,
+                        contentDescription = "Salir",
+                        tint = Color.Black
+                    )
+                }
+
             }
 
             Spacer(modifier = Modifier.width(8.dp))
