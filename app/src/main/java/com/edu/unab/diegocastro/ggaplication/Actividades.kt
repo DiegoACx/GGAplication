@@ -124,7 +124,7 @@ fun Actividades(navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = {},
+            onClick = {navController.navigate("inscritas")},
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
@@ -136,7 +136,7 @@ fun Actividades(navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = {},
+            onClick = {navController.navigate("estado")},
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
