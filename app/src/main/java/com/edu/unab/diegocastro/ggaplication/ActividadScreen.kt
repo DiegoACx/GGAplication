@@ -135,7 +135,7 @@ fun ActividadScreen() {
                 .padding(horizontal = 16.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A))
         ) {
-            Text(text = "INSCRITAS"
+            Text(text = "INSCRIBIRSE A ACTIVIDAD SELECCIONADA"
                 , color = Color.Black)
         }
     }
