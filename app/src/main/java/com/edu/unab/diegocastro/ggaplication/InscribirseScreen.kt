@@ -26,7 +26,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview
 @Composable
 fun InscripcionScreen(navController: NavController) {
     Column(
@@ -188,7 +187,7 @@ fun InscripcionScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Button(
-                onClick = {},
+                onClick = {navController.navigate("actividades")},
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(48.dp)

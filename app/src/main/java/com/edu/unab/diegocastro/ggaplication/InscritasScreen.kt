@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
-@Preview
 @Composable
 fun InscritasScreen(navController: NavController) {
     Column(
@@ -83,7 +82,7 @@ fun InscritasScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = {},
+            onClick = {navController.navigate("chat")},
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)
@@ -96,7 +95,7 @@ fun InscritasScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = {},
+            onClick = {navController.navigate("actividades")},
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)

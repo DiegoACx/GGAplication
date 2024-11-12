@@ -124,7 +124,7 @@ fun HistorialScreen(navController: NavController) {
             contentAlignment = Alignment.Center
         ) {
             Button(
-                onClick = {},
+                onClick = {navController.navigate("estado")},
                 colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A)),
                 modifier = Modifier
                     .width(120.dp)
