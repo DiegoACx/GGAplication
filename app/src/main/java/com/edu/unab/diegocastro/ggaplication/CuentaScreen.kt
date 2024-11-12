@@ -28,7 +28,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.edu.unab.diegocastro.ggaplication.ui.theme.GGAplicationTheme
 
-@Preview
 @Composable
 fun CuentaScreen(navController: NavController) {
     GGAplicationTheme {
@@ -84,7 +83,7 @@ fun CuentaScreen(navController: NavController) {
                 }
 
                 Button(
-                    onClick = { /* Acción de salir */ },
+                    onClick = {navController.navigate("home")},
                     modifier = Modifier
                         .fillMaxWidth(0.9f)
                         .padding(bottom = 16.dp)

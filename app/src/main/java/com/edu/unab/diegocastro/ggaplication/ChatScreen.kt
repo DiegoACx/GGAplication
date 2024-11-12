@@ -18,7 +18,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
-@Preview
 @Composable
 fun ChatScreen(navController: NavController) {
     Column(
@@ -35,7 +34,7 @@ fun ChatScreen(navController: NavController) {
             horizontalArrangement = Arrangement.Start
         ) {
             IconButton(
-                onClick = {}
+                onClick = {navController.navigate("inscritas")}
             ) {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
