@@ -82,7 +82,11 @@ fun InscritasScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = {navController.navigate("chat")},
+            onClick = {
+                navController.navigate("chat") {
+                    popUpTo("inscritas") { inclusive = true }
+                }
+                      },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)
@@ -95,7 +99,7 @@ fun InscritasScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = {navController.navigate("actividades")},
+            onClick = {navController.navigate("actividades"){popUpTo("inscritas"){inclusive = true}} },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)

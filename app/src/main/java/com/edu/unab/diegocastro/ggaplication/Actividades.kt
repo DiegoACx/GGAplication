@@ -51,13 +51,11 @@ fun Actividades(navController: NavController) {
             Box(
                 modifier = Modifier
                     .size(30.dp)
-                    .background(Color(0xFFE1E5CE), shape = CircleShape)
-                    .border(1.dp, Color.Gray, shape = CircleShape)
-                    .clickable { },
+                    .background(Color(0xFFE1E5CE), shape = CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 IconButton(
-                    onClick = {navController.navigate("mas")}
+                    onClick = {navController.navigate("mas") {popUpTo("actividades"){inclusive = true}} }
                 ) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
@@ -116,21 +114,21 @@ fun Actividades(navController: NavController) {
                     .background(Color(0xFFAED581), shape = RoundedCornerShape(8.dp))
                     .padding(16.dp)
             ) {
-                ActivityCard(activityName = "Actividad 1")
+                ActivityCard(navController = navController, activityName = "Actividad 1")
                 Spacer(modifier = Modifier.height(8.dp))
 
-                ActivityCard(activityName = "Actividad 2")
+                ActivityCard(navController = navController, activityName = "Actividad 2")
                 Spacer(modifier = Modifier.height(8.dp))
 
 
-                ActivityCard(activityName = "Actividad 3")
+                ActivityCard(navController = navController, activityName = "Actividad 3")
             }
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = {navController.navigate("inscritas")},
+            onClick = {navController.navigate("inscritas") {popUpTo("actividades"){inclusive = true}} },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
@@ -142,7 +140,7 @@ fun Actividades(navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = {navController.navigate("estado")},
+            onClick = {navController.navigate("estado") {popUpTo("actividades"){inclusive = true}} },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
@@ -154,7 +152,7 @@ fun Actividades(navController: NavController) {
 }
 
 @Composable
-fun ActivityCard(activityName: String) {
+fun ActivityCard(navController: NavController,activityName: String) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -173,8 +171,13 @@ fun ActivityCard(activityName: String) {
             Spacer(modifier = Modifier.height(8.dp))
 
             Button(
-                onClick = {},
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A))
+                onClick = {
+                    navController.navigate("actividad") {
+                        popUpTo("actividades") { inclusive = true }
+                    }
+                },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A)),
+                modifier = Modifier.fillMaxWidth()
             ) {
                 Text(text = "VER ACTIVIDAD")
             }

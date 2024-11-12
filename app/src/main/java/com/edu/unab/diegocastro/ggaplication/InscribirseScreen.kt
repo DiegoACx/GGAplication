@@ -39,19 +39,6 @@ fun InscripcionScreen(navController: NavController) {
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Box(
-                modifier = Modifier
-                    .size(48.dp)
-                    .background(Color(0xFF66BB6A), shape = RoundedCornerShape(8.dp)),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    imageVector = ImageVector.vectorResource(id = R.drawable.ic_launcher_background),
-                    contentDescription = "Regresar",
-                    tint = Color.Black
-                )
-            }
-            Spacer(modifier = Modifier.width(8.dp))
             Text(
                 text = "INSCRIBETE",
                 fontSize = 24.sp,
@@ -187,7 +174,7 @@ fun InscripcionScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Button(
-                onClick = {navController.navigate("actividades")},
+                onClick = {navController.navigate("actividades") {popUpTo("inscribirse"){inclusive = true}} },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(48.dp)
@@ -200,7 +187,7 @@ fun InscripcionScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = {},
+                onClick = {navController.navigate("actividad"){popUpTo("inscribirse"){inclusive = true}} },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(48.dp)
