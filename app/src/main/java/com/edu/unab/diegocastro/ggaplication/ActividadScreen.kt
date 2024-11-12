@@ -93,7 +93,7 @@ fun ActividadScreen(navController: NavController) {
                     .padding(16.dp)
             ) {
                 Text(
-                    text = "INSCRIBETE",
+                    text = "INSCRIBE",
                     color = Color.Black,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,

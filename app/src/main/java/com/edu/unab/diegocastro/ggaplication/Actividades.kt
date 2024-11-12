@@ -175,4 +175,3 @@ fun ActivityCard(activityName: String) {
         }
     }
 }
-
