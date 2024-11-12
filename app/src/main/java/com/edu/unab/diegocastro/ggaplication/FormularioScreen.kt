@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 
-@Preview
 @Composable
 fun FormularioScreen(navController: NavController) {
     Column(
@@ -106,7 +105,7 @@ fun FormularioScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = { /* Acción de Salir */ },
+            onClick = {navController.navigate("home")},
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),

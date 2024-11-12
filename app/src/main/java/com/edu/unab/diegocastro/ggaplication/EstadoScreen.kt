@@ -26,7 +26,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
-@Preview
 @Composable
 fun EstadoScreen(navController: NavController) {
     Column(
@@ -94,7 +93,7 @@ fun EstadoScreen(navController: NavController) {
             modifier = Modifier.fillMaxWidth().padding(8.dp)
         ) {
             Button(
-                onClick = {},
+                onClick = {navController.navigate("historial")},
                 colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A)),
                 modifier = Modifier.padding(8.dp)
             ) {
@@ -102,7 +101,7 @@ fun EstadoScreen(navController: NavController) {
             }
 
             Button(
-                onClick = {},
+                onClick = {navController.navigate("actividades")},
                 colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A)),
                 modifier = Modifier.padding(8.dp)
             ) {
