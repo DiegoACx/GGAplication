@@ -1,5 +1,6 @@
 package com.edu.unab.diegocastro.ggaplication
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,9 +18,15 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,9 +34,43 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.edu.unab.diegocastro.ggaplication.ui.theme.GGAplicationTheme
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 @Composable
 fun CuentaScreen(navController: NavController) {
+    val auth = FirebaseAuth.getInstance()
+    val db = FirebaseFirestore.getInstance()
+    val context = LocalContext.current
+
+    var nombre by remember { mutableStateOf("Cargando...") }
+    var correo by remember { mutableStateOf("Cargando...") }
+    var userId by remember { mutableStateOf("Cargando...") }
+    var horasLibres by remember { mutableStateOf("10") } // Valor quemado
+    var actividadesInscritas by remember { mutableStateOf("5") } // Valor quemado
+
+    // Cargar los datos del usuario desde Firestore
+    LaunchedEffect(Unit) {
+        val user = auth.currentUser
+        if (user != null) {
+            userId = user.uid
+            correo = user.email ?: "Correo no disponible"
+
+            // Obtener el nombre y otros datos del usuario desde Firestore
+            db.collection("users").document(userId).get()
+                .addOnSuccessListener { document ->
+                    if (document != null && document.exists()) {
+                        nombre = document.getString("nombre") ?: "Nombre no disponible"
+                    } else {
+                        Toast.makeText(context, "Usuario no encontrado", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                .addOnFailureListener {
+                    Toast.makeText(context, "Error al cargar los datos", Toast.LENGTH_SHORT).show()
+                }
+        }
+    }
+
     GGAplicationTheme {
         Scaffold(
             modifier = Modifier
@@ -70,20 +111,24 @@ fun CuentaScreen(navController: NavController) {
                         horizontalAlignment = Alignment.Start,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        Text(text = "Nombre:                        XXXXX XXXXX")
+                        Text(text = "Nombre:   $nombre")
                         Spacer(modifier = Modifier.height(15.dp))
-                        Text(text = "Id:                                      XXXXXXXXX")
+                        Text(text = "Id:   $userId")
                         Spacer(modifier = Modifier.height(15.dp))
-                        Text(text = "Correo:                  XXXX@unab.edu.co")
+                        Text(text = "Correo:   $correo")
                         Spacer(modifier = Modifier.height(15.dp))
-                        Text(text = "Horas Libres:                                     XX")
+                        Text(text = "Horas Libres:   $horasLibres")
                         Spacer(modifier = Modifier.height(15.dp))
-                        Text(text = "Actividades Incritas:                         XX")
+                        Text(text = "Actividades Inscritas:   $actividadesInscritas")
                     }
                 }
 
                 Button(
-                    onClick = {navController.navigate("home") {popUpTo("cuenta"){inclusive = true}} },
+                    onClick = {
+                        navController.navigate("home") {
+                            popUpTo("cuenta") { inclusive = true }
+                        }
+                    },
                     modifier = Modifier
                         .fillMaxWidth(0.9f)
                         .padding(bottom = 16.dp)
@@ -100,4 +145,5 @@ fun CuentaScreen(navController: NavController) {
         }
     }
 }
+
 
