@@ -19,10 +19,13 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -32,6 +35,8 @@ import com.edu.unab.diegocastro.ggaplication.ui.theme.GGAplicationTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(navController: NavController) {
+    val idText = remember { mutableStateOf(TextFieldValue("")) }
+    val passwordText = remember { mutableStateOf(TextFieldValue("")) }
     GGAplicationTheme {
         Scaffold(
             modifier = Modifier
@@ -72,30 +77,36 @@ fun LoginScreen(navController: NavController) {
                         verticalArrangement = Arrangement.Center
                     ) {
                         OutlinedTextField(
-                            value = "",
-                            onValueChange = {},
+                            value = idText.value,
+                            onValueChange = { idText.value = it },
                             label = { Text(text = "ID") },
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp)),
                             colors = TextFieldDefaults.outlinedTextFieldColors(
                                 focusedBorderColor = Color(0xFFAED581),
-                                unfocusedBorderColor = Color(0xFFD6E6A7)
+                                unfocusedBorderColor = Color(0xFFD6E6A7),
+                                focusedTextColor = Color.Black,
+                                unfocusedTextColor = Color.Black,
+                                cursorColor = Color.Black
                             )
                         )
 
                         Spacer(modifier = Modifier.height(18.dp))
 
                         OutlinedTextField(
-                            value = "",
-                            onValueChange = {},
+                            value = passwordText.value,
+                            onValueChange = { passwordText.value = it },
                             label = { Text(text = "Password") },
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp)),
                             colors = TextFieldDefaults.outlinedTextFieldColors(
                                 focusedBorderColor = Color(0xFFAED581),
-                                unfocusedBorderColor = Color(0xFFD6E6A7)
+                                unfocusedBorderColor = Color(0xFFD6E6A7),
+                                focusedTextColor = Color.Black,
+                                unfocusedTextColor = Color.Black,
+                                cursorColor = Color.Black
                             )
                         )
                     }
