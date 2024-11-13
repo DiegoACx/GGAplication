@@ -45,6 +45,7 @@ fun RegisterScreen(navController: NavController) {
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var telefono by remember { mutableStateOf("") }
+    var userId by remember { mutableStateOf("") } // Campo nuevo para el ID
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
     var registerError by remember { mutableStateOf<String?>(null) }
@@ -97,6 +98,24 @@ fun RegisterScreen(navController: NavController) {
                             value = username,
                             onValueChange = { username = it },
                             label = { Text(text = "Nombre de usuario") },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp)),
+                            colors = TextFieldDefaults.outlinedTextFieldColors(
+                                focusedBorderColor = Color(0xFF4CAF50),
+                                unfocusedBorderColor = Color(0xFFA3D16A),
+                                focusedTextColor = Color.Black,
+                                unfocusedTextColor = Color.Black,
+                                cursorColor = Color.Black
+                            )
+                        )
+
+                        Spacer(modifier = Modifier.height(12.dp))
+
+                        OutlinedTextField(
+                            value = userId,
+                            onValueChange = { userId = it },
+                            label = { Text(text = "ID del Usuario") },
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp)),
@@ -191,7 +210,7 @@ fun RegisterScreen(navController: NavController) {
                 ) {
                     Button(
                         onClick = {
-                            if (username.isEmpty() || email.isEmpty() || telefono.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                            if (username.isEmpty() || email.isEmpty() || telefono.isEmpty() || userId.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                                 Toast.makeText(context, "Llene todos los campos", Toast.LENGTH_SHORT).show()
                             } else {
                                 if (password == confirmPassword) {
@@ -203,7 +222,8 @@ fun RegisterScreen(navController: NavController) {
                                                 val newUser = hashMapOf(
                                                     "nombre" to username,
                                                     "correo" to email,
-                                                    "telefono" to telefono
+                                                    "telefono" to telefono,
+                                                    "userId" to userId
                                                 )
                                                 db.collection("users").document(user!!.uid).set(newUser)
                                                     .addOnSuccessListener {
@@ -261,4 +281,5 @@ fun RegisterScreen(navController: NavController) {
         }
     }
 }
+
 
