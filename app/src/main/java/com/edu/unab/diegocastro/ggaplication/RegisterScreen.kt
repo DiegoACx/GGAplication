@@ -33,6 +33,7 @@ import androidx.navigation.NavController
 import com.edu.unab.diegocastro.ggaplication.ui.theme.GGAplicationTheme
 import com.google.firebase.firestore.FirebaseFirestore
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
@@ -41,12 +42,16 @@ import com.google.firebase.auth.FirebaseAuth
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RegisterScreen(navController: NavController) {
-    val nombreText = remember { mutableStateOf(TextFieldValue("")) }
-    val apellidoText = remember { mutableStateOf(TextFieldValue("")) }
-    val correoText = remember { mutableStateOf(TextFieldValue("")) }
-    val telefonoText = remember { mutableStateOf(TextFieldValue("")) }
-    val idText = remember { mutableStateOf(TextFieldValue("")) }
-    val passwordText = remember { mutableStateOf(TextFieldValue("")) }
+    var username by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var telefono by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var confirmPassword by remember { mutableStateOf("") }
+    var registerError by remember { mutableStateOf<String?>(null) }
+
+    val auth = FirebaseAuth.getInstance()
+    val db = FirebaseFirestore.getInstance()
+    val context = LocalContext.current
 
     GGAplicationTheme {
         Scaffold(
@@ -89,9 +94,9 @@ fun RegisterScreen(navController: NavController) {
                         verticalArrangement = Arrangement.Center
                     ) {
                         OutlinedTextField(
-                            value = nombreText.value,
-                            onValueChange = { nombreText.value = it },
-                            label = { Text(text = "Nombre") },
+                            value = username,
+                            onValueChange = { username = it },
+                            label = { Text(text = "Nombre de usuario") },
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp)),
@@ -107,9 +112,9 @@ fun RegisterScreen(navController: NavController) {
                         Spacer(modifier = Modifier.height(12.dp))
 
                         OutlinedTextField(
-                            value = apellidoText.value,
-                            onValueChange = { apellidoText.value = it },
-                            label = { Text(text = "Apellido") },
+                            value = email,
+                            onValueChange = { email = it },
+                            label = { Text(text = "Correo Electrónico") },
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp)),
@@ -125,9 +130,9 @@ fun RegisterScreen(navController: NavController) {
                         Spacer(modifier = Modifier.height(12.dp))
 
                         OutlinedTextField(
-                            value = correoText.value,
-                            onValueChange = { correoText.value = it },
-                            label = { Text(text = "Correo Electronico") },
+                            value = telefono,
+                            onValueChange = { telefono = it },
+                            label = { Text(text = "Teléfono") },
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp)),
@@ -143,9 +148,9 @@ fun RegisterScreen(navController: NavController) {
                         Spacer(modifier = Modifier.height(12.dp))
 
                         OutlinedTextField(
-                            value = telefonoText.value,
-                            onValueChange = { telefonoText.value = it },
-                            label = { Text(text = "Telefono") },
+                            value = password,
+                            onValueChange = { password = it },
+                            label = { Text(text = "Contraseña") },
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp)),
@@ -161,27 +166,9 @@ fun RegisterScreen(navController: NavController) {
                         Spacer(modifier = Modifier.height(12.dp))
 
                         OutlinedTextField(
-                            value = idText.value,
-                            onValueChange = { idText.value = it },
-                            label = { Text(text = "ID") },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp)),
-                            colors = TextFieldDefaults.outlinedTextFieldColors(
-                                focusedBorderColor = Color(0xFF4CAF50),
-                                unfocusedBorderColor = Color(0xFFA3D16A),
-                                focusedTextColor = Color.Black,
-                                unfocusedTextColor = Color.Black,
-                                cursorColor = Color.Black
-                            )
-                        )
-
-                        Spacer(modifier = Modifier.height(12.dp))
-
-                        OutlinedTextField(
-                            value = passwordText.value,
-                            onValueChange = { passwordText.value = it },
-                            label = { Text(text = "Password") },
+                            value = confirmPassword,
+                            onValueChange = { confirmPassword = it },
+                            label = { Text(text = "Confirmar Contraseña") },
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp)),
@@ -204,45 +191,48 @@ fun RegisterScreen(navController: NavController) {
                 ) {
                     Button(
                         onClick = {
-                            val db = FirebaseFirestore.getInstance()
-
-                            val user = hashMapOf(
-                                "nombre" to nombreText.value.text,
-                                "apellido" to apellidoText.value.text,
-                                "correo" to correoText.value.text,
-                                "telefono" to telefonoText.value.text,
-                                "id" to idText.value.text,
-                                "password" to passwordText.value.text
-                            )
-
-                            var confirmPassword by remember { mutableStateOf("") }
-                            var registerError by remember { mutableStateOf<String?>(null) }
-                            val auth = FirebaseAuth.getInstance()
-                            val db = FirebaseFirestore.getInstance()
-                            val context = LocalContext.current
-
-                            db.collection("usuarios")
-                                .document(idText.value.text)
-                                .set(user)
-                                .addOnSuccessListener {
-                                    navController.navigate("login") {
-                                        popUpTo("register") { inclusive = true }
-                                    }
+                            if (username.isEmpty() || email.isEmpty() || telefono.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                                Toast.makeText(context, "Llene todos los campos", Toast.LENGTH_SHORT).show()
+                            } else {
+                                if (password == confirmPassword) {
+                                    registerError = null
+                                    auth.createUserWithEmailAndPassword(email, password)
+                                        .addOnCompleteListener { task ->
+                                            if (task.isSuccessful) {
+                                                val user = auth.currentUser
+                                                val newUser = hashMapOf(
+                                                    "nombre" to username,
+                                                    "correo" to email,
+                                                    "telefono" to telefono
+                                                )
+                                                db.collection("users").document(user!!.uid).set(newUser)
+                                                    .addOnSuccessListener {
+                                                        Toast.makeText(context, "Registro exitoso", Toast.LENGTH_SHORT).show()
+                                                        navController.navigate("login")
+                                                    }
+                                                    .addOnFailureListener {
+                                                        Toast.makeText(context, "Error al guardar en Firestore", Toast.LENGTH_SHORT).show()
+                                                    }
+                                            } else {
+                                                Toast.makeText(context, "Error al registrar usuario", Toast.LENGTH_SHORT).show()
+                                            }
+                                        }
+                                } else {
+                                    registerError = "Las contraseñas no coinciden"
+                                    Toast.makeText(context, registerError, Toast.LENGTH_SHORT).show()
                                 }
-                                .addOnFailureListener { e ->
-                                    Log.w("RegisterScreen", "Error al registrar el usuario", e)
-                                }
+                            }
                         },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 4.dp)
                             .height(48.dp),
-                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A))
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1AC48D))
                     ) {
                         Text(
-                            text = "Register",
-                            color = Color.White,
-                            fontWeight = FontWeight.Bold
+                            text = "CREAR",
+                            color = Color(0xFFA3D16A),
+                            fontSize = 18.sp
                         )
                     }
 
@@ -269,3 +259,4 @@ fun RegisterScreen(navController: NavController) {
         }
     }
 }
+
