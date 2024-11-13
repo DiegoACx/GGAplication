@@ -67,16 +67,6 @@ fun MoreScreen(navController: NavController) {
                 ) {
                     Text("CREAR EVENTO", color = Color.White)
                 }
-
-                Spacer(modifier = Modifier.width(16.dp))
-
-                Button(
-                    onClick = {},
-                    colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A)),
-                    modifier = Modifier.weight(1f)
-                ) {
-                    Text("CREAR FORMULARIO", color = Color.White, textAlign = TextAlign.Center)
-                }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -93,10 +83,12 @@ fun MoreScreen(navController: NavController) {
 
 
         }
-
-
         Button(
-            onClick = {navController.navigate("home")},
+            onClick = {
+                navController.navigate("home") {
+                    popUpTo("more") { inclusive = true }
+                }
+                      },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
@@ -122,7 +114,11 @@ fun EventCard(navController: NavController,eventTitle: String, eventDescription:
         Spacer(modifier = Modifier.height(8.dp))
 
         Button(
-            onClick = {navController.navigate("actividades")},
+            onClick = {
+                navController.navigate("actividades") {
+                    popUpTo("more") { inclusive = true }
+                }
+                      },
             colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A)),
             modifier = Modifier.fillMaxWidth()
         ) {

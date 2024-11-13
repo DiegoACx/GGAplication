@@ -82,20 +82,7 @@ fun InscritasScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = {navController.navigate("chat")},
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(48.dp)
-                .padding(horizontal = 8.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A))
-        ) {
-            Text(text = "CHATS", color = Color.White, fontWeight = FontWeight.Bold)
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Button(
-            onClick = {navController.navigate("actividades")},
+            onClick = {navController.navigate("actividades"){popUpTo("inscritas"){inclusive = true}} },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)

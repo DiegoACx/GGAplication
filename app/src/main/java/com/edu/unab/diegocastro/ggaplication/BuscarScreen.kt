@@ -17,6 +17,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -66,13 +67,16 @@ fun BuscarScreen(navController: NavController) {
                 .background(Color(0xFFAED581), shape = RoundedCornerShape(8.dp))
                 .padding(16.dp)
         ) {
-            // Campo de búsqueda
             OutlinedTextField(
                 value = searchText.value,
                 onValueChange = { searchText.value = it },
                 label = { Text("Buscar actividades, eventos o formularios") },
                 leadingIcon = {
-                    Icon(imageVector = Icons.Filled.Search, contentDescription = "Buscar")
+                    IconButton(
+                        onClick = { /* Acción al hacer clic en el icono de búsqueda */ }
+                    ) {
+                        Icon(imageVector = Icons.Filled.Search, contentDescription = "Buscar")
+                    }
                 },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -99,7 +103,7 @@ fun BuscarScreen(navController: NavController) {
         ) {
 
             Button(
-                onClick = {navController.navigate("home")},
+                onClick = {navController.navigate("home") {popUpTo("buscar"){inclusive = true}} },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A), contentColor = Color.Black)
             ) {
                 Text(text = "ATRAS")

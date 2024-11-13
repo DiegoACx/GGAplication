@@ -51,8 +51,7 @@ fun ActividadScreen(navController: NavController) {
                 modifier = Modifier
                     .size(30.dp)
                     .background(Color(0xFFE1E5CE), shape = CircleShape)
-                    .border(1.dp, Color.Gray, shape = CircleShape)
-                    .clickable { },
+                    .clickable {navController.navigate("actividades") {popUpTo("actividad"){inclusive = true}} },
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -129,7 +128,7 @@ fun ActividadScreen(navController: NavController) {
 
 
         Button(
-            onClick = { },
+            onClick = {navController.navigate("inscribirse"){popUpTo("actividad"){inclusive = true}} },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),

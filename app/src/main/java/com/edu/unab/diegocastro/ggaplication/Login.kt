@@ -24,7 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -105,7 +104,11 @@ fun LoginScreen(navController: NavController) {
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Button(
-                    onClick = { navController.navigate("home") },
+                    onClick = {
+                        navController.navigate("home") {
+                            popUpTo("login") { inclusive = true }
+                        }
+                    },
                     modifier = Modifier
                         .fillMaxWidth(0.9f)
                         .height(48.dp),
@@ -119,7 +122,11 @@ fun LoginScreen(navController: NavController) {
                 }
 
                 Button(
-                    onClick = { navController.navigate("register") },
+                    onClick = {
+                        navController.navigate("register") {
+                            popUpTo("login") { inclusive = true }
+                        }
+                    },
                     modifier = Modifier
                         .fillMaxWidth(0.9f)
                         .height(48.dp),
@@ -135,3 +142,4 @@ fun LoginScreen(navController: NavController) {
         }
     }
 }
+
