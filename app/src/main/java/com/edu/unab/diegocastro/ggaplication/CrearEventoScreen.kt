@@ -1,7 +1,6 @@
 package com.edu.unab.diegocastro.ggaplication
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -17,23 +16,30 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.edu.unab.diegocastro.ggaplication.ui.theme.GGAplicationTheme
 
 
-
 @Composable
 fun CrearEventoScreen(navController: NavController) {
+    val NombreEvento = remember { mutableStateOf(TextFieldValue("")) }
+    val HoraInicio = remember { mutableStateOf(TextFieldValue("")) }
+    val Cupos = remember { mutableStateOf(TextFieldValue("")) }
+    val Lider = remember { mutableStateOf(TextFieldValue("")) }
+    val Descripcion = remember { mutableStateOf(TextFieldValue("")) }
+
+
     GGAplicationTheme {
         Scaffold(
             modifier = Modifier
@@ -75,7 +81,8 @@ fun CrearEventoScreen(navController: NavController) {
                         verticalArrangement = Arrangement.Center
                     ) {
                         OutlinedTextField(
-                            value = "", onValueChange = {},
+                            value = NombreEvento.value,
+                            onValueChange = { NombreEvento.value = it },
                             label = { Text(text = "Nombre del Evento:") },
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -85,7 +92,8 @@ fun CrearEventoScreen(navController: NavController) {
                         Spacer(modifier = Modifier.height(12.dp))
 
                         OutlinedTextField(
-                            value = "", onValueChange = {},
+                            value = HoraInicio.value,
+                            onValueChange = { HoraInicio.value = it },
                             label = { Text(text = "Hora de Inicio:") },
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -95,7 +103,8 @@ fun CrearEventoScreen(navController: NavController) {
                         Spacer(modifier = Modifier.height(12.dp))
 
                         OutlinedTextField(
-                            value = "", onValueChange = {},
+                            value = Cupos.value,
+                            onValueChange = { Cupos.value = it },
                             label = { Text(text = "Cupos:") },
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -105,7 +114,8 @@ fun CrearEventoScreen(navController: NavController) {
                         Spacer(modifier = Modifier.height(12.dp))
 
                         OutlinedTextField(
-                            value = "", onValueChange = {},
+                            value = Lider.value,
+                            onValueChange = { Lider.value = it },
                             label = { Text(text = "Lider:") },
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -115,7 +125,8 @@ fun CrearEventoScreen(navController: NavController) {
                         Spacer(modifier = Modifier.height(12.dp))
 
                         OutlinedTextField(
-                            value = "", onValueChange = {},
+                            value = Descripcion.value,
+                            onValueChange = { Descripcion.value = it },
                             label = { Text(text = "Descripcion:") },
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -146,7 +157,13 @@ fun CrearEventoScreen(navController: NavController) {
                         )
                     }
                     Button(
-                        onClick = {navController.navigate("mas") {popUpTo("crearevento") {inclusive = true}}},
+                        onClick = {
+                            navController.navigate("mas") {
+                                popUpTo("crearevento") {
+                                    inclusive = true
+                                }
+                            }
+                        },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 4.dp)
