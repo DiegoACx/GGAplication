@@ -114,7 +114,7 @@ fun InscripcionScreen(navController: NavController) {
 
                 OutlinedTextField(
                     value = apellido.value,
-                    onValueChange = { nombre.value = it },
+                    onValueChange = { apellido.value = it },
                     label = { Text("APELLIDO") },
                     colors = TextFieldDefaults.colors(
                         focusedContainerColor = Color.White,
@@ -128,7 +128,7 @@ fun InscripcionScreen(navController: NavController) {
 
                 OutlinedTextField(
                     value = email.value,
-                    onValueChange = { nombre.value = it },
+                    onValueChange = { email.value = it },
                     label = { Text("EMAIL") },
                     colors = TextFieldDefaults.colors(
                         focusedContainerColor = Color.White,
@@ -142,7 +142,7 @@ fun InscripcionScreen(navController: NavController) {
 
                 OutlinedTextField(
                     value = telefono.value,
-                    onValueChange = { nombre.value = it },
+                    onValueChange = { telefono.value = it },
                     label = { Text("TELEFONO") },
                     colors = TextFieldDefaults.colors(
                         focusedContainerColor = Color.White,
@@ -156,7 +156,7 @@ fun InscripcionScreen(navController: NavController) {
 
                 OutlinedTextField(
                     value = id.value,
-                    onValueChange = { nombre.value = it },
+                    onValueChange = { id.value = it },
                     label = { Text("ID") },
                     colors = TextFieldDefaults.colors(
                         focusedContainerColor = Color.White,
