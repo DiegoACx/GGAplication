@@ -13,9 +13,11 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,6 +33,7 @@ import androidx.navigation.NavController
 import com.edu.unab.diegocastro.ggaplication.ui.theme.GGAplicationTheme
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CrearEventoScreen(navController: NavController) {
     val NombreEvento = remember { mutableStateOf(TextFieldValue("")) }
@@ -87,6 +90,12 @@ fun CrearEventoScreen(navController: NavController) {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp)),
+                            colors = TextFieldDefaults.outlinedTextFieldColors(
+                                focusedBorderColor = Color(0xFF4CAF50),
+                                unfocusedBorderColor = Color(0xFFA3D16A),
+                                focusedTextColor = Color.Black,
+                                unfocusedTextColor = Color.Black,
+                                cursorColor = Color.Black )
                         )
 
                         Spacer(modifier = Modifier.height(12.dp))
@@ -98,6 +107,12 @@ fun CrearEventoScreen(navController: NavController) {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp)),
+                            colors = TextFieldDefaults.outlinedTextFieldColors(
+                                focusedBorderColor = Color(0xFF4CAF50),
+                                unfocusedBorderColor = Color(0xFFA3D16A),
+                                focusedTextColor = Color.Black,
+                                unfocusedTextColor = Color.Black,
+                                cursorColor = Color.Black )
                         )
 
                         Spacer(modifier = Modifier.height(12.dp))
@@ -109,6 +124,12 @@ fun CrearEventoScreen(navController: NavController) {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp)),
+                            colors = TextFieldDefaults.outlinedTextFieldColors(
+                                focusedBorderColor = Color(0xFF4CAF50),
+                                unfocusedBorderColor = Color(0xFFA3D16A),
+                                focusedTextColor = Color.Black,
+                                unfocusedTextColor = Color.Black,
+                                cursorColor = Color.Black )
                         )
 
                         Spacer(modifier = Modifier.height(12.dp))
@@ -120,6 +141,12 @@ fun CrearEventoScreen(navController: NavController) {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp)),
+                            colors = TextFieldDefaults.outlinedTextFieldColors(
+                                focusedBorderColor = Color(0xFF4CAF50),
+                                unfocusedBorderColor = Color(0xFFA3D16A),
+                                focusedTextColor = Color.Black,
+                                unfocusedTextColor = Color.Black,
+                                cursorColor = Color.Black )
                         )
 
                         Spacer(modifier = Modifier.height(12.dp))
@@ -131,6 +158,12 @@ fun CrearEventoScreen(navController: NavController) {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp)),
+                            colors = TextFieldDefaults.outlinedTextFieldColors(
+                                focusedBorderColor = Color(0xFF4CAF50),
+                                unfocusedBorderColor = Color(0xFFA3D16A),
+                                focusedTextColor = Color.Black,
+                                unfocusedTextColor = Color.Black,
+                                cursorColor = Color.Black )
                         )
                     }
                 }
