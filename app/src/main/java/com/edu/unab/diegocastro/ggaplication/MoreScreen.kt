@@ -61,7 +61,7 @@ fun MoreScreen(navController: NavController) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Button(
-                    onClick = {},
+                    onClick = {navController.navigate("crearevento") {popUpTo("more") {inclusive = true}} },
                     colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A)),
                     modifier = Modifier.weight(1f)
                 ) {

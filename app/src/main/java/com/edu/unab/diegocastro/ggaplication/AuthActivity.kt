@@ -43,6 +43,7 @@ class AuthActivity : ComponentActivity() {
                 composable("buscar") { BuscarScreen(navController) }
                 composable("actividad") { ActividadScreen(navController) }
                 composable("actividades") { Actividades(navController) }
+                composable("crearevento") { CrearEventoScreen(navController) }
             }
         }
     }
