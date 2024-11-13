@@ -208,7 +208,9 @@ fun RegisterScreen(navController: NavController) {
                                                 db.collection("users").document(user!!.uid).set(newUser)
                                                     .addOnSuccessListener {
                                                         Toast.makeText(context, "Registro exitoso", Toast.LENGTH_SHORT).show()
-                                                        navController.navigate("login")
+                                                        navController.navigate("login") {
+                                                            popUpTo("register") { inclusive = true }
+                                                        }
                                                     }
                                                     .addOnFailureListener {
                                                         Toast.makeText(context, "Error al guardar en Firestore", Toast.LENGTH_SHORT).show()
@@ -227,11 +229,11 @@ fun RegisterScreen(navController: NavController) {
                             .fillMaxWidth()
                             .padding(vertical = 4.dp)
                             .height(48.dp),
-                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1AC48D))
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A))
                     ) {
                         Text(
                             text = "CREAR",
-                            color = Color(0xFFA3D16A),
+                            color = Color.White,
                             fontSize = 18.sp
                         )
                     }
