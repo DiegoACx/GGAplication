@@ -32,7 +32,6 @@ fun MoreScreen(navController: NavController) {
     val db = FirebaseFirestore.getInstance()
     val eventos = remember { mutableStateListOf<Evento>() }
 
-    // Cargar datos desde Firebase con manejo de errores
     LaunchedEffect(Unit) {
         db.collection("eventos")
             .addSnapshotListener { snapshot, error ->

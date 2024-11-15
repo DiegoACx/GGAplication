@@ -47,22 +47,20 @@ fun CuentaScreen(navController: NavController) {
     var correo by remember { mutableStateOf("Cargando...") }
     var userId by remember { mutableStateOf("Cargando...") }
     var telefono by remember { mutableStateOf("Cargando...") }
-    var horasLibres by remember { mutableStateOf("10") } // Valor quemado
-    var actividadesInscritas by remember { mutableStateOf("5") } // Valor quemado
+    var horasLibres by remember { mutableStateOf("10") }
+    var actividadesInscritas by remember { mutableStateOf("5") }
 
-    // Cargar los datos del usuario desde Firestore
     LaunchedEffect(Unit) {
         val user = auth.currentUser
         if (user != null) {
             correo = user.email ?: "Correo no disponible"
 
-            // Obtener los datos del usuario desde Firestore
             db.collection("users").document(user.uid).get()
                 .addOnSuccessListener { document ->
                     if (document != null && document.exists()) {
                         nombre = document.getString("nombre") ?: "Nombre no disponible"
                         telefono = document.getString("telefono") ?: "Teléfono no disponible"
-                        userId = document.getString("userId") ?: "ID no disponible" // Obtener el ID personalizado
+                        userId = document.getString("userId") ?: "ID no disponible"
                     } else {
                         Toast.makeText(context, "Usuario no encontrado", Toast.LENGTH_SHORT).show()
                     }
@@ -115,7 +113,7 @@ fun CuentaScreen(navController: NavController) {
                     ) {
                         Text(text = "Nombre:   $nombre")
                         Spacer(modifier = Modifier.height(15.dp))
-                        Text(text = "Id:   $userId") // Mostrar el ID personalizado
+                        Text(text = "Id:   $userId")
                         Spacer(modifier = Modifier.height(15.dp))
                         Text(text = "Correo:   $correo")
                         Spacer(modifier = Modifier.height(15.dp))

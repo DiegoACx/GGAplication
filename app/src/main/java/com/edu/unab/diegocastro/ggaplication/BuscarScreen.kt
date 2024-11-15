@@ -117,7 +117,6 @@ fun BuscarScreen(navController: NavController) {
                     .weight(1f)
                     .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp))
             ) {
-                // Mostrar lista de eventos filtrados
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxSize()
