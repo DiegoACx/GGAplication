@@ -1,5 +1,6 @@
 package com.edu.unab.diegocastro.ggaplication
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -31,10 +32,14 @@ fun MoreScreen(navController: NavController) {
     val db = FirebaseFirestore.getInstance()
     val eventos = remember { mutableStateListOf<Evento>() }
 
+    // Cargar datos desde Firebase con manejo de errores
     LaunchedEffect(Unit) {
         db.collection("eventos")
             .addSnapshotListener { snapshot, error ->
-                if (error == null && snapshot != null) {
+                if (error != null) {
+                    // Mostrar un error o registrar el error
+                    Log.d("Firebase", "Error al cargar eventos: ${error.message}")
+                } else if (snapshot != null) {
                     eventos.clear()
                     eventos.addAll(snapshot.toObjects())
                 }
@@ -129,8 +134,12 @@ fun EventCard(navController: NavController, eventTitle: String, eventDescription
 
         Button(
             onClick = {
-                navController.navigate("actividades") {
-                    popUpTo("more") { inclusive = true }
+                try {
+                    navController.navigate("actividades") {
+                        popUpTo("more") { inclusive = true }
+                    }
+                } catch (e: Exception) {
+                    Log.d("Navigation", "Error al navegar a actividades: ${e.message}")
                 }
             },
             colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A)),
