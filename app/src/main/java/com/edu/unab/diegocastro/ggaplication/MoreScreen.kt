@@ -36,7 +36,6 @@ fun MoreScreen(navController: NavController) {
         db.collection("eventos")
             .addSnapshotListener { snapshot, error ->
                 if (error != null) {
-                    // Mostrar un error o registrar el error
                     Log.d("Firebase", "Error al cargar eventos: ${error.message}")
                 } else if (snapshot != null) {
                     eventos.clear()
@@ -133,13 +132,7 @@ fun EventCard(navController: NavController, eventTitle: String, eventDescription
 
         Button(
             onClick = {
-                try {
-                    navController.navigate("actividades") {
-                        popUpTo("more") { inclusive = true }
-                    }
-                } catch (e: Exception) {
-                    Log.d("Navigation", "Error al navegar a actividades: ${e.message}")
-                }
+                navController.navigate("actividades/$eventTitle")
             },
             colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A)),
             modifier = Modifier.fillMaxWidth()
