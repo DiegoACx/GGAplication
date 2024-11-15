@@ -42,7 +42,7 @@ fun BuscarScreen(navController: NavController) {
         try {
             val snapshot = db.collection("eventos").get().await()
             eventos = snapshot.toObjects()
-            filteredEventos = eventos // Mostrar todos los eventos al inicio
+            filteredEventos = eventos
         } catch (e: Exception) {
             Toast.makeText(context, "Error al cargar eventos: ${e.message}", Toast.LENGTH_SHORT).show()
         }
