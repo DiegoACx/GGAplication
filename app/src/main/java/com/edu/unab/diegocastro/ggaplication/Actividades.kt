@@ -24,7 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 @Composable
 fun Actividades(navController: NavController, eventTitle: String) {
     val db = FirebaseFirestore.getInstance()
-    val actividades = remember { mutableStateListOf<String>() }
+    val actividades = remember { mutableStateListOf<Pair<String, String>>() }
 
     LaunchedEffect(Unit) {
         db.collection("actividades")
@@ -34,7 +34,11 @@ fun Actividades(navController: NavController, eventTitle: String) {
                     Log.d("Firebase", "Error al cargar actividades: ${error.message}")
                 } else if (snapshot != null) {
                     actividades.clear()
-                    actividades.addAll(snapshot.documents.map { it.getString("nombre") ?: "" })
+                    snapshot.documents.forEach { doc ->
+                        val id = doc.id
+                        val nombre = doc.getString("nombre") ?: ""
+                        actividades.add(id to nombre)
+                    }
                 }
             }
     }
@@ -73,8 +77,12 @@ fun Actividades(navController: NavController, eventTitle: String) {
                     modifier = Modifier.fillMaxWidth()
                 )
             } else {
-                actividades.forEach { actividad ->
-                    ActivityCard(navController = navController, activityName = actividad)
+                actividades.forEach { (id, nombre) ->
+                    ActivityCard(
+                        navController = navController,
+                        activityName = nombre,
+                        onDeleteClick = { deleteActivity(db, id, actividades) }
+                    )
                     Spacer(modifier = Modifier.height(8.dp))
                 }
             }
@@ -93,7 +101,11 @@ fun Actividades(navController: NavController, eventTitle: String) {
 }
 
 @Composable
-fun ActivityCard(navController: NavController, activityName: String) {
+fun ActivityCard(
+    navController: NavController,
+    activityName: String,
+    onDeleteClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -111,16 +123,27 @@ fun ActivityCard(navController: NavController, activityName: String) {
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            Button(
-                onClick = {
-                    navController.navigate("actividad") {
-                        popUpTo("actividades") { inclusive = true }
-                    }
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A)),
-                modifier = Modifier.fillMaxWidth()
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(text = "VER ACTIVIDAD", color = Color.White)
+                Button(
+                    onClick = {
+                        navController.navigate("actividad") {
+                            popUpTo("actividades") { inclusive = true }
+                        }
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A))
+                ) {
+                    Text(text = "VER ACTIVIDAD", color = Color.White)
+                }
+
+                Button(
+                    onClick = onDeleteClick,
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFE57373))
+                ) {
+                    Text(text = "ELIMINAR", color = Color.White)
+                }
             }
         }
     }
@@ -140,5 +163,17 @@ fun addActivityToEvent(db: FirebaseFirestore, eventTitle: String) {
         }
         .addOnFailureListener { e ->
             Log.d("Firebase", "Error al crear actividad: ${e.message}")
+        }
+}
+
+fun deleteActivity(db: FirebaseFirestore, id: String, actividades: MutableList<Pair<String, String>>) {
+    db.collection("actividades").document(id)
+        .delete()
+        .addOnSuccessListener {
+            Log.d("Firebase", "Actividad eliminada exitosamente")
+            actividades.removeAll { it.first == id }
+        }
+        .addOnFailureListener { e ->
+            Log.d("Firebase", "Error al eliminar actividad: ${e.message}")
         }
 }
