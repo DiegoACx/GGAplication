@@ -1,5 +1,6 @@
 package com.edu.unab.diegocastro.ggaplication
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
@@ -36,7 +38,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CrearEventoScreen(navController: NavController) {
-    val db = FirebaseFirestore.getInstance() // Instancia de Firestore
+    val db = FirebaseFirestore.getInstance()
+    val context = LocalContext.current
     val NombreEvento = remember { mutableStateOf(TextFieldValue("")) }
     val HoraInicio = remember { mutableStateOf(TextFieldValue("")) }
     val Cupos = remember { mutableStateOf(TextFieldValue("")) }
@@ -95,7 +98,8 @@ fun CrearEventoScreen(navController: NavController) {
                                 unfocusedBorderColor = Color(0xFFA3D16A),
                                 focusedTextColor = Color.Black,
                                 unfocusedTextColor = Color.Black,
-                                cursorColor = Color.Black )
+                                cursorColor = Color.Black
+                            )
                         )
 
                         Spacer(modifier = Modifier.height(12.dp))
@@ -112,7 +116,8 @@ fun CrearEventoScreen(navController: NavController) {
                                 unfocusedBorderColor = Color(0xFFA3D16A),
                                 focusedTextColor = Color.Black,
                                 unfocusedTextColor = Color.Black,
-                                cursorColor = Color.Black )
+                                cursorColor = Color.Black
+                            )
                         )
 
                         Spacer(modifier = Modifier.height(12.dp))
@@ -129,7 +134,8 @@ fun CrearEventoScreen(navController: NavController) {
                                 unfocusedBorderColor = Color(0xFFA3D16A),
                                 focusedTextColor = Color.Black,
                                 unfocusedTextColor = Color.Black,
-                                cursorColor = Color.Black )
+                                cursorColor = Color.Black
+                            )
                         )
 
                         Spacer(modifier = Modifier.height(12.dp))
@@ -146,7 +152,8 @@ fun CrearEventoScreen(navController: NavController) {
                                 unfocusedBorderColor = Color(0xFFA3D16A),
                                 focusedTextColor = Color.Black,
                                 unfocusedTextColor = Color.Black,
-                                cursorColor = Color.Black )
+                                cursorColor = Color.Black
+                            )
                         )
 
                         Spacer(modifier = Modifier.height(12.dp))
@@ -163,7 +170,8 @@ fun CrearEventoScreen(navController: NavController) {
                                 unfocusedBorderColor = Color(0xFFA3D16A),
                                 focusedTextColor = Color.Black,
                                 unfocusedTextColor = Color.Black,
-                                cursorColor = Color.Black )
+                                cursorColor = Color.Black
+                            )
                         )
                     }
                 }
@@ -176,7 +184,19 @@ fun CrearEventoScreen(navController: NavController) {
                 ) {
                     Button(
                         onClick = {
-                            // Guardar el evento en Firestore
+                            if (NombreEvento.value.text.isBlank() ||
+                                HoraInicio.value.text.isBlank() ||
+                                Cupos.value.text.isBlank() ||
+                                Lider.value.text.isBlank() ||
+                                Descripcion.value.text.isBlank()) {
+                                Toast.makeText(
+                                    context,
+                                    "Por favor, completa todos los campos.",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                                return@Button
+                            }
+
                             val evento = hashMapOf(
                                 "nombre" to NombreEvento.value.text,
                                 "hora_inicio" to HoraInicio.value.text,
@@ -188,10 +208,21 @@ fun CrearEventoScreen(navController: NavController) {
                             db.collection("eventos")
                                 .add(evento)
                                 .addOnSuccessListener {
-                                    println("Evento registrado con éxito")
+                                    Toast.makeText(
+                                        context,
+                                        "Evento registrado con éxito.",
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                    navController.navigate("mas") {
+                                        popUpTo("crearevento") { inclusive = true }
+                                    }
                                 }
                                 .addOnFailureListener { e ->
-                                    println("Error al registrar el evento: $e")
+                                    Toast.makeText(
+                                        context,
+                                        "Error al registrar el evento: ${e.localizedMessage}",
+                                        Toast.LENGTH_LONG
+                                    ).show()
                                 }
                         },
                         modifier = Modifier
