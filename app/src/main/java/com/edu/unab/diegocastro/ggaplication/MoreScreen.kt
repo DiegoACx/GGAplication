@@ -1,33 +1,46 @@
 package com.edu.unab.diegocastro.ggaplication
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObjects
 
+data class Evento(
+    val nombre: String = "",
+    val descripcion: String = ""
+)
 
 @Composable
 fun MoreScreen(navController: NavController) {
+    val db = FirebaseFirestore.getInstance()
+    val eventos = remember { mutableStateListOf<Evento>() }
+
+    LaunchedEffect(Unit) {
+        db.collection("eventos")
+            .addSnapshotListener { snapshot, error ->
+                if (error == null && snapshot != null) {
+                    eventos.clear()
+                    eventos.addAll(snapshot.toObjects())
+                }
+            }
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -47,7 +60,6 @@ fun MoreScreen(navController: NavController) {
             fontWeight = FontWeight.Bold
         )
 
-
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -61,7 +73,9 @@ fun MoreScreen(navController: NavController) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Button(
-                    onClick = {navController.navigate("crearevento") {popUpTo("more") {inclusive = true}} },
+                    onClick = {
+                        navController.navigate("crearevento") { popUpTo("more") { inclusive = true } }
+                    },
                     colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A)),
                     modifier = Modifier.weight(1f)
                 ) {
@@ -71,24 +85,24 @@ fun MoreScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            EventCard(navController = navController, eventTitle = "Evento 1", eventDescription = "Descripción Evento 1")
-            Spacer(modifier = Modifier.height(8.dp))
-            EventCard(navController = navController, eventTitle = "Evento 2", eventDescription = "Descripción Evento 2")
-            Spacer(modifier = Modifier.height(8.dp))
-            EventCard(navController = navController, eventTitle = "Evento 3", eventDescription = "Descripción Evento 3")
-
+            eventos.forEach { evento ->
+                EventCard(
+                    navController = navController,
+                    eventTitle = evento.nombre,
+                    eventDescription = evento.descripcion
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+            }
 
             Spacer(modifier = Modifier.height(16.dp))
-
-
-
         }
+
         Button(
             onClick = {
                 navController.navigate("home") {
                     popUpTo("more") { inclusive = true }
                 }
-                      },
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
@@ -100,7 +114,7 @@ fun MoreScreen(navController: NavController) {
 }
 
 @Composable
-fun EventCard(navController: NavController,eventTitle: String, eventDescription: String) {
+fun EventCard(navController: NavController, eventTitle: String, eventDescription: String) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -118,7 +132,7 @@ fun EventCard(navController: NavController,eventTitle: String, eventDescription:
                 navController.navigate("actividades") {
                     popUpTo("more") { inclusive = true }
                 }
-                      },
+            },
             colors = ButtonDefaults.buttonColors(Color(0xFFA3D16A)),
             modifier = Modifier.fillMaxWidth()
         ) {
