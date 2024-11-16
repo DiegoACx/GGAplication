@@ -35,61 +35,75 @@ fun CrearActividadScreen(navController: NavController, eventTitle: String) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
             .background(Color(0xFFE1E5CE))
+            .padding(16.dp)
     ) {
+        Spacer(modifier = Modifier.height(32.dp))
         Text(
-            text = "Crear Actividad para $eventTitle",
+            text = "CREAR ACTIVIDADES DE $eventTitle",
             fontSize = 24.sp,
             color = Color(0xFFA3D16A),
-            fontWeight = FontWeight.Bold,
             modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.weight(1f))
 
-        TextField(
-            value = nombreActividad,
-            onValueChange = { nombreActividad = it },
-            label = { Text("Nombre de la Actividad") },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Button(
-            onClick = {
-                if (nombreActividad.isNotEmpty()) {
-                    val actividadData = mapOf(
-                        "nombre" to nombreActividad,
-                        "evento" to eventTitle
-                    )
-                    db.collection("actividades")
-                        .add(actividadData)
-                        .addOnSuccessListener {
-                            Log.d("Firebase", "Actividad creada exitosamente")
-                            navController.popBackStack()
-                        }
-                        .addOnFailureListener { e ->
-                            Log.d("Firebase", "Error al crear actividad: ${e.message}")
-                        }
-                }
-            },
-            modifier = Modifier.fillMaxWidth(),
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A))
+        Column(
+            modifier = Modifier
+                .fillMaxWidth(0.9f)
+                .background(Color(0xFFAED581), shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp))
+                .padding(16.dp),
+            horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally,
+            verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center
         ) {
-            Text(text = "Guardar Actividad", color = Color.White)
+            TextField(
+                value = nombreActividad,
+                onValueChange = { nombreActividad = it },
+                label = { Text("Nombre de la Actividad") },
+                modifier = Modifier.fillMaxWidth()
+            )
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.weight(1f))
 
-        Button(
-            onClick = { navController.popBackStack() },
-            modifier = Modifier.fillMaxWidth(),
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFE57373))
+        Column(
+            modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = "Cancelar", color = Color.White)
+            Button(
+                onClick = {
+                    if (nombreActividad.isNotEmpty()) {
+                        val actividadData = mapOf(
+                            "nombre" to nombreActividad,
+                            "evento" to eventTitle
+                        )
+                        db.collection("actividades")
+                            .add(actividadData)
+                            .addOnSuccessListener {
+                                Log.d("Firebase", "Actividad creada exitosamente")
+                                navController.popBackStack()
+                            }
+                            .addOnFailureListener { e ->
+                                Log.d("Firebase", "Error al crear actividad: ${e.message}")
+                            }
+                    }
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 8.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A))
+            ) {
+                Text(text = "Guardar Actividad", color = Color.White)
+            }
+
+            Button(
+                onClick = { navController.popBackStack() },
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFE57373))
+            ) {
+                Text(text = "Cancelar", color = Color.White)
+            }
         }
     }
 }
