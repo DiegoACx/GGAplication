@@ -21,11 +21,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.google.firebase.firestore.FirebaseFirestore
 
+
+
 @Composable
 fun Actividades(navController: NavController, eventTitle: String) {
     val db = FirebaseFirestore.getInstance()
     val actividades = remember { mutableStateListOf<Pair<String, String>>() }
 
+    // Cargar actividades asociadas al evento actual
     LaunchedEffect(Unit) {
         db.collection("actividades")
             .whereEqualTo("evento", eventTitle)
@@ -49,6 +52,7 @@ fun Actividades(navController: NavController, eventTitle: String) {
             .background(Color(0xFFE1E5CE))
             .padding(16.dp)
     ) {
+        // Título
         Text(
             text = "ACTIVIDADES DE $eventTitle",
             fontSize = 24.sp,
@@ -60,6 +64,7 @@ fun Actividades(navController: NavController, eventTitle: String) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        // Lista de actividades
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -90,8 +95,9 @@ fun Actividades(navController: NavController, eventTitle: String) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        // Botón para crear actividad
         Button(
-            onClick = { addActivityToEvent(db, eventTitle) },
+            onClick = { navController.navigate("crear_actividad/$eventTitle") },
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A))
         ) {
@@ -149,23 +155,7 @@ fun ActivityCard(
     }
 }
 
-fun addActivityToEvent(db: FirebaseFirestore, eventTitle: String) {
-    val nuevaActividad = "Nueva Actividad ${System.currentTimeMillis() % 1000}"
-    val actividadData = mapOf(
-        "nombre" to nuevaActividad,
-        "evento" to eventTitle
-    )
-
-    db.collection("actividades")
-        .add(actividadData)
-        .addOnSuccessListener {
-            Log.d("Firebase", "Actividad creada exitosamente")
-        }
-        .addOnFailureListener { e ->
-            Log.d("Firebase", "Error al crear actividad: ${e.message}")
-        }
-}
-
+// Función para eliminar actividades
 fun deleteActivity(db: FirebaseFirestore, id: String, actividades: MutableList<Pair<String, String>>) {
     db.collection("actividades").document(id)
         .delete()
@@ -177,3 +167,4 @@ fun deleteActivity(db: FirebaseFirestore, id: String, actividades: MutableList<P
             Log.d("Firebase", "Error al eliminar actividad: ${e.message}")
         }
 }
+

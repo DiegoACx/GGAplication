@@ -44,10 +44,12 @@ class AuthActivity : ComponentActivity() {
                 composable("actividad") { ActividadScreen(navController) }
                 composable("actividades/{eventTitle}") { backStackEntry ->
                     val eventTitle = backStackEntry.arguments?.getString("eventTitle") ?: ""
-                    Actividades(navController = navController, eventTitle = eventTitle)
+                    Actividades(navController, eventTitle)
                 }
-
-                composable("crearevento") { CrearEventoScreen(navController) }
+                composable("crear_actividad/{eventTitle}") { backStackEntry ->
+                    val eventTitle = backStackEntry.arguments?.getString("eventTitle") ?: ""
+                    CrearActividadScreen(navController, eventTitle)
+                }
             }
         }
     }
