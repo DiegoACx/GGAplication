@@ -22,7 +22,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun ActividadScreen(navController: NavController) {
+fun ActividadScreen(
+    navController: NavController,
+    actividadNombre: String
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -41,7 +44,7 @@ fun ActividadScreen(navController: NavController) {
                     .size(30.dp)
                     .background(Color(0xFFE1E5CE), shape = CircleShape)
                     .clickable {
-                        navController.popBackStack()
+                        navController.navigate("actividades")
                     },
                 contentAlignment = Alignment.Center
             ) {
@@ -58,9 +61,7 @@ fun ActividadScreen(navController: NavController) {
                 text = "ACTIVIDAD",
                 fontSize = 24.sp,
                 color = Color(0xFFA3D16A),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp),
+                modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold
             )
@@ -75,60 +76,21 @@ fun ActividadScreen(navController: NavController) {
                 .background(Color(0xFFAED581), shape = RoundedCornerShape(8.dp))
                 .padding(16.dp)
         ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(Color(0xFF8CC663), RoundedCornerShape(8.dp))
-                    .padding(16.dp)
-            ) {
-                Text(
-                    text = "INSCRIBE",
-                    color = Color.Black,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth()
-                )
-            }
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .fillMaxSize()
-                    .weight(1f)
-                    .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp))
+            Text(
+                text = "Nombre: $actividadNombre",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black,
+                modifier = Modifier.padding(bottom = 8.dp)
             )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f)
-                    .background(Color(0xFFD6E6A7), shape = RoundedCornerShape(8.dp))
+            Text(
+                text = "Descripción de la actividad:",
+                fontSize = 16.sp,
+                color = Color.Black
             )
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Button(
-            onClick = {
-                navController.navigate("inscribirse") {
-                    popUpTo("actividad") { inclusive = true }
-                }
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A))
-        ) {
-            Text(
-                text = "INSCRIBIRSE A ACTIVIDAD SELECCIONADA",
-                color = Color.Black
-            )
-        }
     }
 }
-

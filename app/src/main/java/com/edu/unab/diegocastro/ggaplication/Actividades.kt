@@ -28,7 +28,6 @@ fun Actividades(navController: NavController, eventTitle: String) {
     val db = FirebaseFirestore.getInstance()
     val actividades = remember { mutableStateListOf<Pair<String, String>>() }
 
-    // Cargar actividades asociadas al evento actual
     LaunchedEffect(Unit) {
         db.collection("actividades")
             .whereEqualTo("evento", eventTitle)
@@ -52,7 +51,6 @@ fun Actividades(navController: NavController, eventTitle: String) {
             .background(Color(0xFFE1E5CE))
             .padding(16.dp)
     ) {
-        // Título
         Text(
             text = "ACTIVIDADES DE $eventTitle",
             fontSize = 24.sp,
@@ -64,7 +62,6 @@ fun Actividades(navController: NavController, eventTitle: String) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Lista de actividades
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -95,7 +92,6 @@ fun Actividades(navController: NavController, eventTitle: String) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Botón para crear actividad
         Button(
             onClick = { navController.navigate("crear_actividad/$eventTitle") },
             modifier = Modifier.fillMaxWidth(),
@@ -155,7 +151,6 @@ fun ActivityCard(
     }
 }
 
-// Función para eliminar actividades
 fun deleteActivity(db: FirebaseFirestore, id: String, actividades: MutableList<Pair<String, String>>) {
     db.collection("actividades").document(id)
         .delete()
