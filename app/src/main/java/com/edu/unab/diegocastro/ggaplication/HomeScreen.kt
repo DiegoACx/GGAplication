@@ -148,7 +148,7 @@ fun HomeScreen(navController: NavController) {
         Button(
             onClick = {
                 FirebaseAuth.getInstance().signOut()
-                navController.navigate("login")
+                navController.navigate("login") { popUpTo("home") { inclusive = true } }
             },
             modifier = Modifier
                 .fillMaxWidth()
