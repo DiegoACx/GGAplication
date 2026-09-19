@@ -13,7 +13,6 @@ import com.edu.unab.diegocastro.ggaplication.Actividades
 import com.edu.unab.diegocastro.ggaplication.BuscarScreen
 import com.edu.unab.diegocastro.ggaplication.CuentaScreen
 import com.edu.unab.diegocastro.ggaplication.HomeScreen
-import com.edu.unab.diegocastro.ggaplication.InscritasScreen
 import com.edu.unab.diegocastro.ggaplication.LoginScreen
 import com.edu.unab.diegocastro.ggaplication.MoreScreen
 import com.edu.unab.diegocastro.ggaplication.RegisterScreen
@@ -32,7 +31,6 @@ class AuthActivity : ComponentActivity() {
                 composable("register") { RegisterScreen(navController) }
                 composable("home") { HomeScreen(navController) }
                 composable("mas") { MoreScreen(navController) }
-                composable("inscritas") { InscritasScreen(navController) }
                 composable("cuenta") { CuentaScreen(navController) }
                 composable("buscar") { BuscarScreen(navController) }
                 composable("actividad/{actividadNombre}") { backStackEntry ->
