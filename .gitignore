@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Firebase: configuracion con API key del proyecto (usar google-services.json.example como plantilla)
+google-services.json
