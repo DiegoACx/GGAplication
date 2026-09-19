@@ -16,3 +16,18 @@ local.properties
 
 # Firebase: configuracion con API key del proyecto (usar google-services.json.example como plantilla)
 google-services.json
+
+# IDE (Android Studio / IntelliJ)
+.idea/
+*.iml
+
+# Gradle y builds
+.gradle/
+build/
+local.properties
+
+# Firmas y binarios de release
+*.jks
+*.keystore
+*.apk
+*.aab
