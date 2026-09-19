@@ -17,6 +17,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObjects
 import kotlinx.coroutines.tasks.await
@@ -145,7 +146,10 @@ fun HomeScreen(navController: NavController) {
         }
 
         Button(
-            onClick = { navController.navigate("login") },
+            onClick = {
+                FirebaseAuth.getInstance().signOut()
+                navController.navigate("login")
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
