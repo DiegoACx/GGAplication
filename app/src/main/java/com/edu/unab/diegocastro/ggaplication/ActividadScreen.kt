@@ -44,7 +44,7 @@ fun ActividadScreen(
                     .size(30.dp)
                     .background(Color(0xFFE1E5CE), shape = CircleShape)
                     .clickable {
-                        navController.navigate("actividades")
+                        navController.popBackStack()
                     },
                 contentAlignment = Alignment.Center
             ) {
