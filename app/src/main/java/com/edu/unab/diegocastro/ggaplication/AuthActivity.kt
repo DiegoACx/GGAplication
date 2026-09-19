@@ -31,6 +31,7 @@ class AuthActivity : ComponentActivity() {
                 composable("register") { RegisterScreen(navController) }
                 composable("home") { HomeScreen(navController) }
                 composable("mas") { MoreScreen(navController) }
+                composable("crearevento") { CrearEventoScreen(navController) }
                 composable("cuenta") { CuentaScreen(navController) }
                 composable("buscar") { BuscarScreen(navController) }
                 composable("actividad/{actividadNombre}") { backStackEntry ->
