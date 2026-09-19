@@ -1,5 +1,6 @@
 package com.edu.unab.diegocastro.ggaplication
 
+import android.net.Uri
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -131,9 +132,7 @@ fun ActivityCard(
             ) {
                 Button(
                     onClick = {
-                        navController.navigate("actividad") {
-                            popUpTo("actividades") { inclusive = true }
-                        }
+                        navController.navigate("actividad/${Uri.encode(activityName)}")
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA3D16A))
                 ) {
