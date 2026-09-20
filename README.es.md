@@ -104,7 +104,7 @@ La navegación vive en un único `NavHost` dentro de `AuthActivity` (la activida
 - `app/google-services.json` está en el `.gitignore`. No lo subas nunca.
 - Restringe tu API key de Firebase en Google Cloud Console a tu paquete y SHA-1.
 - No dejes Firestore en modo de prueba. Reglas mínimas recomendadas:
-```
+  ```
   rules_version = '2';
   service cloud.firestore {
     match /databases/{database}/documents {
@@ -113,7 +113,7 @@ La navegación vive en un único `NavHost` dentro de `AuthActivity` (la activida
       }
     }
   }
-```
+  ```
 
 ## Estado del proyecto y limitaciones conocidas
 

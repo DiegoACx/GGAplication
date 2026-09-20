@@ -104,7 +104,7 @@ Navigation lives in a single `NavHost` inside `AuthActivity` (the launcher activ
 - `app/google-services.json` is in `.gitignore`. Never commit it.
 - Restrict your Firebase API key in Google Cloud Console to your package name and SHA-1.
 - Do not leave Firestore in test mode. Minimum recommended rules:
-```
+  ```
   rules_version = '2';
   service cloud.firestore {
     match /databases/{database}/documents {
@@ -113,7 +113,7 @@ Navigation lives in a single `NavHost` inside `AuthActivity` (the launcher activ
       }
     }
   }
-```
+  ```
 
 ## Project status and known limitations
 
