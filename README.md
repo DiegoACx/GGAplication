@@ -56,9 +56,9 @@ Developed as a team project for the *Mobile Technologies* course (4th semester) 
 ## Installation
 
 1. Clone the repository:
-```bash
+   ```bash
    git clone https://github.com/DiegoACx/GGAplication.git
-```
+   ```
 2. Open the folder in Android Studio and wait for the Gradle sync to finish.
 3. Set up Firebase (next section) and place your `google-services.json` in `app/`.
 4. Select an emulator or device and run the `app` configuration.
